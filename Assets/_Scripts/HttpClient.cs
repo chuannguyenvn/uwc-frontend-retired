@@ -12,8 +12,7 @@ public static class HttpClient
         POST,
     }
 
-    private static UnityWebRequest ConstructWebRequest(string endpoint, Type requestType,
-        string bearerKey, object objectToSend = null)
+    private static UnityWebRequest ConstructWebRequest(string endpoint, Type requestType, string bearerKey, object objectToSend = null)
     {
         var requestTypeString = requestType switch
         {
@@ -25,8 +24,7 @@ public static class HttpClient
 
         if (objectToSend != null)
         {
-            byte[] jsonToSend =
-                new System.Text.UTF8Encoding().GetBytes(JsonConvert.SerializeObject(objectToSend));
+            byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(JsonConvert.SerializeObject(objectToSend));
             webRequest.uploadHandler = new UploadHandlerRaw(jsonToSend);
         }
 
@@ -37,8 +35,8 @@ public static class HttpClient
         return webRequest;
     }
 
-    public static IEnumerator SendRequest(string endpoint, Type requestType, Action<bool> callback,
-        string bearerKey, object objectToSend = null)
+    public static IEnumerator SendRequest(string endpoint, Type requestType, Action<bool> callback, string bearerKey,
+        object objectToSend = null)
     {
         var webRequest = ConstructWebRequest(endpoint, requestType, bearerKey, objectToSend);
 
@@ -46,7 +44,8 @@ public static class HttpClient
 
         if (webRequest.result != UnityWebRequest.Result.Success)
         {
-            Debug.LogError("Failed request: " + webRequest.url + "\nMessage: " + webRequest.error);
+            Debug.LogError("Failed request: " + webRequest.url + "\nTitle: " + webRequest.error + "\nContent: " +
+                           webRequest.downloadHandler.text);
             callback?.Invoke(false);
             yield break;
         }
@@ -55,8 +54,8 @@ public static class HttpClient
         webRequest.Dispose();
     }
 
-    public static IEnumerator SendRequest<T>(string endpoint, Type requestType,
-        Action<bool, T> callback, string bearerKey, object objectToSend = null) where T : new()
+    public static IEnumerator SendRequest<T>(string endpoint, Type requestType, Action<bool, T> callback, string bearerKey,
+        object objectToSend = null) where T : new()
     {
         var webRequest = ConstructWebRequest(endpoint, requestType, bearerKey, objectToSend);
 
@@ -64,7 +63,8 @@ public static class HttpClient
 
         if (webRequest.result != UnityWebRequest.Result.Success)
         {
-            Debug.LogError("Failed request: " + webRequest.url + "\nMessage: " + webRequest.error);
+            Debug.LogError("Failed request: " + webRequest.url + "\nTitle: " + webRequest.error + "\nContent: " +
+                           webRequest.downloadHandler.text);
             callback?.Invoke(false, new T());
             yield break;
         }
