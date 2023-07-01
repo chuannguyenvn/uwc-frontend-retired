@@ -123,50 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &18944655
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 18944657}
-  - component: {fileID: 18944656}
-  m_Layer: 0
-  m_Name: Test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &18944656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 18944655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2309c422993498fbf6776b2087702b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &18944657
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 18944655}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &155818153
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,12 +550,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d53b1bb6d90459b8086b998acc6046d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  apiKey: AIzaSyAcmULvAHe_Zakb7HiWFAsf2n9q2JaiJ8E
-  lat: -33.856606
-  lon: 151.21501
-  zoom: 12
+  Latitude: -33.85661
+  Longitude: 151.21501
+  Zoom: 12
   mapResolution: 1
-  mapType: 0
+  mapMapStyle: 0
 --- !u!114 &1220628112
 MonoBehaviour:
   m_ObjectHideFlags: 0
