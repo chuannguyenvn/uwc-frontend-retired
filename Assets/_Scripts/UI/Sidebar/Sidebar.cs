@@ -11,8 +11,9 @@ namespace UI.Sidebar
             var cellPrefab = ResourceManager.Instance.SidebarCellPrefab;
             foreach (var type in Enum.GetValues(typeof(SidebarCellType)))
             {
+                Debug.Log(type);
                 var cell = Instantiate(cellPrefab, transform, false);
-                cell.Init(SidebarCellTypeData.TextualNames[(SidebarCellType)type]);
+                cell.Init((SidebarCellType)type);
             }
         }
     }

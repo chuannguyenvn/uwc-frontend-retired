@@ -3,6 +3,6 @@
     public enum SidebarCellType
     {
         Map,
-        
+        Mcps,
     }
 }
