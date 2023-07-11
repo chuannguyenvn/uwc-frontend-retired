@@ -10,33 +10,30 @@ namespace UI.Sidebar
         [SerializeField] private TMP_Text _cellTypeText;
 
         private SideInspectorType _sideInspectorType;
-        private SideInspector _sideInspector;
-
-        private bool _isInspectorShowing = false;
+        private SidePanel _sidePanel;
 
         public void Init(SideInspectorType sideInspectorType)
         {
             _sideInspectorType = sideInspectorType;
 
             _cellTypeText.text = SidebarManager.Instance.TypeNames[_sideInspectorType];
-            _sideInspector = SidebarManager.Instance.Panels[_sideInspectorType];
+            _sidePanel = SidebarManager.Instance.Panels[_sideInspectorType];
 
-            if (_sideInspector != null)
+            if (_sidePanel != null)
             {
-                _button.onClick.AddListener(ToggleInspector);
+                _button.onClick.AddListener(TogglePanel);
             }
         }
 
-        private void ToggleInspector()
+        private void TogglePanel()
         {
-            _isInspectorShowing = !_isInspectorShowing;
-            if (_isInspectorShowing)
+            if (_sidePanel.IsShowing)
             {
-                _sideInspector.ShowTweened();
+                _sidePanel.HideTweened();
             }
             else
             {
-                _sideInspector.HideTweened();
+                _sidePanel.ShowTweened();
             }
         }
     }

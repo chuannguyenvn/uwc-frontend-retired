@@ -2,7 +2,7 @@
 
 namespace UI.Sidebar
 {
-    public class McpsSideInspector : SideInspector
+    public class McpsSidePanel : SidePanel
     {
 
     }
