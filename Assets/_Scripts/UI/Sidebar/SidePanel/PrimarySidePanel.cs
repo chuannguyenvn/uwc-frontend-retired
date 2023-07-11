@@ -1,5 +1,6 @@
 ﻿using System;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 namespace UI.Sidebar
@@ -9,12 +10,16 @@ namespace UI.Sidebar
         public SidePanelType SidePanelType;
 
         [SerializeField] private RectTransform _rectTransform;
+        [SerializeField] private TMP_Text _titleText;
+        
         private Tween _anchorPosTween;
 
         public bool IsShowing { get; private set; }
 
         private void Start()
         {
+            _titleText.text = SidebarController.Instance.TypeNames[SidePanelType];
+            
             ShowInstant();
             HideInstant();
         }
