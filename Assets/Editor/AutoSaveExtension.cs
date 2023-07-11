@@ -3,7 +3,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Editor
+namespace EditorExtensions
 {
     [InitializeOnLoad]
     public static class AutoSaveExtension
