@@ -10,6 +10,6 @@
         Reports,
         Messaging,
         Settings,
-        Helps,
+        Helps
     }
 }

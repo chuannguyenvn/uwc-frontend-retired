@@ -6,15 +6,16 @@ using UnityEngine;
 
 public class StateMachine<T> : Machine<T> where T : Enum
 {
+    private readonly Queue<T> _stateQueue = new();
+    private bool isChangingState;
+    private bool started;
+
     public StateMachine(MonoBehaviour owner, T startingState) : base(owner)
     {
         _stateQueue.Enqueue(startingState);
     }
 
     public T CurrentState { get; private set; }
-    private Queue<T> _stateQueue = new();
-    private bool started = false;
-    private bool isChangingState = false;
 
     public void Start()
     {
@@ -25,8 +26,14 @@ public class StateMachine<T> : Machine<T> where T : Enum
 
     public void Stop()
     {
-        if (!started) Debug.LogError(Owner.name + "'s state machine is ended before started.");
-        else if (isChangingState) Debug.LogError(Owner.name + "'s state machine is ended while changing state.");
+        if (!started)
+        {
+            Debug.LogError(Owner.name + "'s state machine is ended before started.");
+        }
+        else if (isChangingState)
+        {
+            Debug.LogError(Owner.name + "'s state machine is ended while changing state.");
+        }
         else
         {
             Owner.StopCoroutine(StartMachine_CO());
@@ -44,15 +51,16 @@ public class StateMachine<T> : Machine<T> where T : Enum
         yield return Owner.StartCoroutine(RunQueueOfType(startingState, enterWorkUnits));
 
         while (true)
-        {
             if (_stateQueue.Count > 0)
             {
                 var newState = _stateQueue.Dequeue();
                 yield return Owner.StartCoroutine(ChangeState_CO(newState));
                 CurrentState = newState;
             }
-            else yield return null;
-        }
+            else
+            {
+                yield return null;
+            }
     }
 
     private IEnumerator EndMachine_CO()

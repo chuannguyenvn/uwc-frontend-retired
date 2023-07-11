@@ -33,39 +33,36 @@ public static class Utility
 
     public static List<Vector2Int> TransformToPositiveCoordinates(this List<Vector2Int> list)
     {
-        Vector2Int minV = new Vector2Int(int.MaxValue, int.MaxValue);
+        var minV = new Vector2Int(int.MaxValue, int.MaxValue);
 
-        foreach (Vector2Int i in list)
+        foreach (var i in list)
         {
             if (i.x < minV.x) minV.x = i.x;
             if (i.y < minV.y) minV.y = i.y;
         }
 
-        List<Vector2Int> results = new List<Vector2Int>();
-        foreach (Vector2Int i in list)
-        {
-            results.Add(i - minV);
-        }
+        var results = new List<Vector2Int>();
+        foreach (var i in list) results.Add(i - minV);
 
         return results;
     }
 
     public static Color MultiplyHSV(this Color color, float hMul, float sMul, float vMul)
     {
-        Color.RGBToHSV(color, out float h, out float s, out float v);
+        Color.RGBToHSV(color, out var h, out var s, out var v);
 
         return Color.HSVToRGB(Mathf.Clamp01(h * hMul), Mathf.Clamp01(s * sMul), Mathf.Clamp01(v * vMul));
     }
 
     public static Color CopySV(this Color color, Color copy)
     {
-        Color.RGBToHSV(color, out float h, out float _, out float _);
-        Color.RGBToHSV(copy, out float _, out float s, out float v);
+        Color.RGBToHSV(color, out var h, out var _, out var _);
+        Color.RGBToHSV(copy, out var _, out var s, out var v);
         return Color.HSVToRGB(h, s, v);
     }
 
     /// <summary>
-    /// Set the HSV components of a Color. Provide a negative float to leave a component intact.
+    ///     Set the HSV components of a Color. Provide a negative float to leave a component intact.
     /// </summary>
     /// <param name="color"></param>
     /// <param name="h"></param>
@@ -74,7 +71,7 @@ public static class Utility
     /// <returns></returns>
     public static Color SetHSV(this Color color, float h, float s, float v)
     {
-        Color.RGBToHSV(color, out float H, out float S, out float V);
+        Color.RGBToHSV(color, out var H, out var S, out var V);
         if (h >= 0) H = h;
         if (s >= 0) S = s;
         if (v >= 0) V = v;
@@ -83,16 +80,13 @@ public static class Utility
 
     public static Color SetAlpha(this Color color, float a)
     {
-        Color newColor = new Color(color.r, color.g, color.b, a);
+        var newColor = new Color(color.r, color.g, color.b, a);
         return newColor;
     }
 
     public static void SetAll<T>(this IList<T> list, T value)
     {
-        for (int i = 0; i < list.Count; i++)
-        {
-            list[i] = value;
-        }
+        for (var i = 0; i < list.Count; i++) list[i] = value;
     }
 
     public static int Normalize(this int i)
@@ -154,7 +148,7 @@ public static class Utility
     {
         return new Vector2(vector2.x, y);
     }
-    
+
     public static Vector3 WithZ(this Vector2 vector2, float z)
     {
         return new Vector3(vector2.x, vector2.y, z);
@@ -166,28 +160,26 @@ public static class Utility
         action?.Invoke();
     }
 
-    public static bool IsInBetweenInclusive(this IComparable mid, IComparable firstLimit,
-        IComparable secondLimit)
+    public static bool IsInBetweenInclusive(this IComparable mid, IComparable firstLimit, IComparable secondLimit)
     {
-        return mid.CompareTo(firstLimit) >= 0 && mid.CompareTo(secondLimit) <= 0 ||
-               mid.CompareTo(secondLimit) >= 0 && mid.CompareTo(firstLimit) <= 0;
+        return (mid.CompareTo(firstLimit) >= 0 && mid.CompareTo(secondLimit) <= 0) ||
+               (mid.CompareTo(secondLimit) >= 0 && mid.CompareTo(firstLimit) <= 0);
     }
 
-    public static bool IsInBetweenExclusive(this IComparable mid, IComparable firstLimit,
-        IComparable secondLimit)
+    public static bool IsInBetweenExclusive(this IComparable mid, IComparable firstLimit, IComparable secondLimit)
     {
-        return mid.CompareTo(firstLimit) > 0 && mid.CompareTo(secondLimit) < 0 ||
-               mid.CompareTo(secondLimit) > 0 && mid.CompareTo(firstLimit) < 0;
+        return (mid.CompareTo(firstLimit) > 0 && mid.CompareTo(secondLimit) < 0) ||
+               (mid.CompareTo(secondLimit) > 0 && mid.CompareTo(firstLimit) < 0);
     }
 
     public static bool IsFloatInBetweenInclusive(this float mid, float firstLimit, float secondLimit)
     {
         if (Mathf.Approximately(mid, firstLimit) || Mathf.Approximately(mid, secondLimit)) return true;
 
-        return mid.CompareTo(firstLimit) >= 0 && mid.CompareTo(secondLimit) <= 0 ||
-               mid.CompareTo(secondLimit) >= 0 && mid.CompareTo(firstLimit) <= 0;
+        return (mid.CompareTo(firstLimit) >= 0 && mid.CompareTo(secondLimit) <= 0) ||
+               (mid.CompareTo(secondLimit) >= 0 && mid.CompareTo(firstLimit) <= 0);
     }
-    
+
     public static int RandomSign()
     {
         return Random.Range(0, 2) == 0 ? 1 : -1;
@@ -215,7 +207,7 @@ public static class Utility
 
     public static float GetH(this Color color)
     {
-        Color.RGBToHSV(color, out float h, out _, out _);
+        Color.RGBToHSV(color, out var h, out _, out _);
         return h;
     }
 
@@ -223,7 +215,6 @@ public static class Utility
     {
         vector3.x = x;
     }
-
 
 
     public static Vector2 GetLastPoint(this LineRenderer lineRenderer)
@@ -242,7 +233,7 @@ public static class Utility
         if (lineRenderer.positionCount == 0) return;
         lineRenderer.positionCount--;
     }
-    
+
     public static void UpdateLastPoint(this LineRenderer lineRenderer, Vector3 pos)
     {
         lineRenderer.SetPosition(lineRenderer.positionCount - 1, pos);
@@ -250,12 +241,12 @@ public static class Utility
 
     public static List<Vector2> GenerateRegularShape(int sideCount, float radius, float rotation = 0)
     {
-        List<Vector2> newPath = new List<Vector2>(sideCount);
-        float rad = Mathf.PI / sideCount;
+        var newPath = new List<Vector2>(sideCount);
+        var rad = Mathf.PI / sideCount;
         if (sideCount % 2 == 1) rad = Mathf.PI / 2;
         if (sideCount % 4 == 2) rad = 0;
 
-        for (int i = 0; i < sideCount; i++)
+        for (var i = 0; i < sideCount; i++)
         {
             rad += 2 * Mathf.PI / sideCount;
             newPath.Add(new Vector2(Mathf.Cos(rad + rotation), Mathf.Sin(rad + rotation)) * radius);
@@ -264,18 +255,13 @@ public static class Utility
         return newPath;
     }
 
-    public static bool IsIntersectionOnLine(Vector2 a1, Vector2 a2, Vector2 b1, Vector2 b2,
-        out Vector2 intersection, bool checkHead = true)
+    public static bool IsIntersectionOnLine(Vector2 a1, Vector2 a2, Vector2 b1, Vector2 b2, out Vector2 intersection, bool checkHead = true)
     {
-
         intersection = Vector2.positiveInfinity;
-        
+
         if (Mathfs.Approximately((a1 - a2).normalized, (b1 - b2).normalized))
         {
-            if (Mathf.Approximately(b1.x, b2.x))
-            {
-                return Mathf.Approximately(a1.x, b1.x);
-            }
+            if (Mathf.Approximately(b1.x, b2.x)) return Mathf.Approximately(a1.x, b1.x);
 
             return Mathf.Approximately(a1.y, (b2.y - b1.y) / (b2.x - b1.x) * (a1.x - b2.x) + b2.y);
         }
@@ -292,28 +278,21 @@ public static class Utility
         }
         else
         {
-            intersection.x =
-                (b1.y - a1.y - b1.x * ((b2.y - b1.y) / (b2.x - b1.x)) +
-                 a1.x * ((a2.y - a1.y) / (a2.x - a1.x))) /
-                ((a2.y - a1.y) / (a2.x - a1.x) - (b2.y - b1.y) / (b2.x - b1.x));
+            intersection.x = (b1.y - a1.y - b1.x * ((b2.y - b1.y) / (b2.x - b1.x)) + a1.x * ((a2.y - a1.y) / (a2.x - a1.x))) /
+                             ((a2.y - a1.y) / (a2.x - a1.x) - (b2.y - b1.y) / (b2.x - b1.x));
 
             intersection.y = (a2.y - a1.y) / (a2.x - a1.x) * (intersection.x - a1.x) + a1.y;
         }
 
-        return intersection.x.IsFloatInBetweenInclusive(a1.x, a2.x) &&
-               intersection.x.IsFloatInBetweenInclusive(b1.x, b2.x) &&
-               intersection.y.IsFloatInBetweenInclusive(a1.y, a2.y) &&
-               intersection.y.IsFloatInBetweenInclusive(b1.y, b2.y);
+        return intersection.x.IsFloatInBetweenInclusive(a1.x, a2.x) && intersection.x.IsFloatInBetweenInclusive(b1.x, b2.x) &&
+               intersection.y.IsFloatInBetweenInclusive(a1.y, a2.y) && intersection.y.IsFloatInBetweenInclusive(b1.y, b2.y);
     }
 
     public static Vector2? GetIntersection(Vector2 a1, Vector2 a2, Vector2 b1, Vector2 b2)
     {
         var intersection = Vector2.zero;
 
-        if (Mathfs.Approximately((a1 - a2).normalized, (b1 - b2).normalized))
-        {
-            return null;
-        }
+        if (Mathfs.Approximately((a1 - a2).normalized, (b1 - b2).normalized)) return null;
 
         if (Mathf.Approximately(a1.x, a2.x))
         {
@@ -327,20 +306,18 @@ public static class Utility
         }
         else
         {
-            intersection.x =
-                (b1.y - a1.y - b1.x * ((b2.y - b1.y) / (b2.x - b1.x)) +
-                 a1.x * ((a2.y - a1.y) / (a2.x - a1.x))) /
-                ((a2.y - a1.y) / (a2.x - a1.x) - (b2.y - b1.y) / (b2.x - b1.x));
+            intersection.x = (b1.y - a1.y - b1.x * ((b2.y - b1.y) / (b2.x - b1.x)) + a1.x * ((a2.y - a1.y) / (a2.x - a1.x))) /
+                             ((a2.y - a1.y) / (a2.x - a1.x) - (b2.y - b1.y) / (b2.x - b1.x));
             intersection.y = (a2.y - a1.y) / (a2.x - a1.x) * (intersection.x - a1.x) + a1.y;
         }
 
         return intersection;
     }
 
-    public static bool TryGetIntersectionOneLineExtended(Vector2 extendA, Vector2 extendB, Vector2 lineA,
-        Vector2 lineB, out Vector2 intersection)
+    public static bool TryGetIntersectionOneLineExtended(Vector2 extendA, Vector2 extendB, Vector2 lineA, Vector2 lineB,
+        out Vector2 intersection)
     {
-        Vector2? test = GetIntersection(extendA, extendB, lineA, lineB);
+        var test = GetIntersection(extendA, extendB, lineA, lineB);
         intersection = test.GetValueOrDefault();
 
         return test.HasValue && IsBetweenPointsInclusive(intersection, lineA, lineB);
@@ -348,16 +325,14 @@ public static class Utility
 
     public static bool IsBetweenPointsInclusive(this Vector2 point, Vector2 a, Vector2 b)
     {
-        return Math.Abs(Vector2.Distance(point, a) + Vector2.Distance(point, b) -
-                        Vector2.Distance(a, b)) < 0.001f;
+        return Math.Abs(Vector2.Distance(point, a) + Vector2.Distance(point, b) - Vector2.Distance(a, b)) < 0.001f;
     }
 
-    public static bool IsInsideTriangle(this Vector2 point, Vector2 a, Vector2 b, Vector2 c,
-        float errorTolerance = -1f)
+    public static bool IsInsideTriangle(this Vector2 point, Vector2 a, Vector2 b, Vector2 c, float errorTolerance = -1f)
     {
-        float s1 = Sign(point, a, b);
-        float s2 = Sign(point, b, c);
-        float s3 = Sign(point, c, a);
+        var s1 = Sign(point, a, b);
+        var s2 = Sign(point, b, c);
+        var s3 = Sign(point, c, a);
 
         // if (errorTolerance < 0) errorTolerance = Mathf.Epsilon;
         //
@@ -372,14 +347,12 @@ public static class Utility
         }
     }
 
-    public static bool IsLineBetweenPoints(Vector2 center, Vector2 lineEnd, Vector2 pointA,
-        Vector2 pointB)
+    public static bool IsLineBetweenPoints(Vector2 center, Vector2 lineEnd, Vector2 pointA, Vector2 pointB)
     {
         var ALine = (pointA - center).normalized;
         var BLine = (pointB - center).normalized;
         var testLine = (lineEnd - center).normalized;
-        return Mathf.Approximately(Vector2.Angle(testLine, ALine) + Vector2.Angle(testLine, BLine),
-            Vector2.Angle(ALine, BLine));
+        return Mathf.Approximately(Vector2.Angle(testLine, ALine) + Vector2.Angle(testLine, BLine), Vector2.Angle(ALine, BLine));
     }
 
     public static float SignedAngle(this Vector2 center, Vector2 from, Vector2 to)
@@ -405,7 +378,7 @@ public static class Utility
 
     public static int Orientation(Vector2 a, Vector2 b, Vector2 c)
     {
-        float val = (b.y - a.y) * (c.x - b.x) - (c.y - b.y) * (b.x - a.x);
+        var val = (b.y - a.y) * (c.x - b.x) - (c.y - b.y) * (b.x - a.x);
         if (Mathf.Approximately(val, 0f)) return 0;
         if (val > 0f) return 1;
         return -1;
@@ -427,33 +400,28 @@ public static class Utility
 
     public static bool IsPointInPolygon(this Vector2 v, Vector2[] polygon)
     {
-        bool orientation = Orientation(v, polygon[^1], polygon[0]) == 1;
-        for (int i = 0; i < polygon.Length - 1; i++)
-        {
-            if (orientation != (Orientation(v, polygon[i], polygon[i + i]) == 1)) return false;
-        }
+        var orientation = Orientation(v, polygon[^1], polygon[0]) == 1;
+        for (var i = 0; i < polygon.Length - 1; i++)
+            if (orientation != (Orientation(v, polygon[i], polygon[i + i]) == 1))
+                return false;
 
         return true;
     }
 
     public static bool IsPointInPolygon(this Vector3 v, Vector2[] polygon)
     {
-        bool orientation = Orientation(v, polygon[^1], polygon[0]) == 1;
-        for (int i = 0; i < polygon.Length - 1; i++)
-        {
-            if (orientation != (Orientation(v, polygon[i], polygon[i + 1]) == 1)) return false;
-        }
+        var orientation = Orientation(v, polygon[^1], polygon[0]) == 1;
+        for (var i = 0; i < polygon.Length - 1; i++)
+            if (orientation != (Orientation(v, polygon[i], polygon[i + 1]) == 1))
+                return false;
 
         return true;
     }
 
     public static Vector2[] ScalePolygon(this Vector2[] polygon, float scale)
     {
-        Vector2[] newPolygon = new Vector2[polygon.Length];
-        for (int i = 0; i < polygon.Length; i++)
-        {
-            newPolygon[i] = polygon[i] * scale;
-        }
+        var newPolygon = new Vector2[polygon.Length];
+        for (var i = 0; i < polygon.Length; i++) newPolygon[i] = polygon[i] * scale;
 
         return newPolygon;
     }

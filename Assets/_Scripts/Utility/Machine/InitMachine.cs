@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class InitMachine<T> : Machine<T> where T : Enum
 {
-    public bool Completed { get; private set; } = false;
-
-    private bool isRunning = false;
+    private bool isRunning;
 
     public InitMachine(MonoBehaviour owner) : base(owner)
     {
     }
+
+    public bool Completed { get; private set; }
 
     public void StartWorkQueue()
     {

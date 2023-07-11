@@ -7,7 +7,7 @@ namespace Visuals
     public class TextVisualElement : MonoBehaviour
     {
         [SerializeField] private FontType _fontType;
-        
+
         private void Start()
         {
             var text = GetComponent<TMP_Text>();

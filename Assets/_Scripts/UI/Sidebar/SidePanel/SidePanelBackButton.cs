@@ -1,13 +1,11 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.Serialization;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI.Sidebar
 {
     public class SidePanelBackButton : MonoBehaviour
     {
-        [FormerlySerializedAs("_sidePanel")] [SerializeField] private PrimarySidePanel _primarySidePanel;
+        [SerializeField] private PrimarySidePanel _primarySidePanel;
         [SerializeField] private Button _button;
 
         private void Start()

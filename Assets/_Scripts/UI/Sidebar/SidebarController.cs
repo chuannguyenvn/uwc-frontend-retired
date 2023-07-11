@@ -9,18 +9,18 @@ namespace UI.Sidebar
         [SerializeField] private McpsPrimarySidePanel _mcpsPrimarySidePanel;
         [SerializeField] private VehiclesPrimarySidePanel _vehiclesPrimarySidePanel;
 
-        public Dictionary<SidePanelType, string> TypeNames;
-        public Dictionary<SidePanelType, PrimarySidePanel> Panels;
-
         public SidePanelType CurrentlyActivatedSidebarType;
 
         private readonly Stack<PrimarySidePanel> _backStack = new();
+        public Dictionary<SidePanelType, PrimarySidePanel> Panels;
+
+        public Dictionary<SidePanelType, string> TypeNames;
 
         protected override void Awake()
         {
             base.Awake();
 
-            TypeNames = new()
+            TypeNames = new Dictionary<SidePanelType, string>
             {
                 {SidePanelType.Map, "Map"},
                 {SidePanelType.Tasks, "Tasks"},
@@ -30,10 +30,10 @@ namespace UI.Sidebar
                 {SidePanelType.Reports, "Reports"},
                 {SidePanelType.Messaging, "Messaging"},
                 {SidePanelType.Settings, "Settings"},
-                {SidePanelType.Helps, "Helps"},
+                {SidePanelType.Helps, "Helps"}
             };
 
-            Panels = new()
+            Panels = new Dictionary<SidePanelType, PrimarySidePanel>
             {
                 {SidePanelType.Map, null},
                 {SidePanelType.Tasks, _tasksPrimarySidePanel},
@@ -43,7 +43,7 @@ namespace UI.Sidebar
                 {SidePanelType.Reports, null},
                 {SidePanelType.Messaging, null},
                 {SidePanelType.Settings, null},
-                {SidePanelType.Helps, null},
+                {SidePanelType.Helps, null}
             };
         }
 

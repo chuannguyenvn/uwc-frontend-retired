@@ -2,6 +2,6 @@
 {
     public enum FontType
     {
-        Primary,
+        Primary
     }
 }

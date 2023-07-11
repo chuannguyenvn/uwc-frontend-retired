@@ -5,7 +5,7 @@ using Mapbox.Utils;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace _Scripts.Map
+namespace Map
 {
     public class MapNavigationController : Singleton<MapNavigationController>
     {

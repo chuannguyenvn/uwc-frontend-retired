@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3523721434827982907}
   - component: {fileID: 4789590962884641612}
   m_Layer: 5
-  m_Name: Sidebar_Cell
+  m_Name: Sidebar - Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,5 +1,3 @@
-﻿
-    public class ObjectsPool<T> : Singleton<ObjectsPool<T>>
-    {
-        
-    }
+﻿public class ObjectsPool<T> : Singleton<ObjectsPool<T>>
+{
+}

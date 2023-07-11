@@ -4,15 +4,15 @@ using UnityEngine;
 public static class Randoms
 {
     /// <summary>
-    /// Shuffle the list in-place.
+    ///     Shuffle the list in-place.
     /// </summary>
     public static void Shuffle<T>(this IList<T> list)
     {
-        int n = list.Count;
+        var n = list.Count;
         while (n > 1)
         {
             n--;
-            int k = Random.Range(0, n + 1);
+            var k = Random.Range(0, n + 1);
             (list[k], list[n]) = (list[n], list[k]);
         }
     }
@@ -25,7 +25,7 @@ public static class Randoms
     }
 
     /// <summary>
-    /// Generate a Vector3 with randomly generated components in ranges (inclusive.
+    ///     Generate a Vector3 with randomly generated components in ranges (inclusive.
     /// </summary>
     /// <returns></returns>
     public static Vector3 RandomVector3((float, float) xBounds, (float, float) yBounds)
@@ -34,7 +34,7 @@ public static class Randoms
     }
 
     /// <summary>
-    /// Generate a Vector3Int with randomly generated components in ranges.
+    ///     Generate a Vector3Int with randomly generated components in ranges.
     /// </summary>
     /// <param name="x">Start of xBounds (inclusive) and end of xBounds (exclusive).</param>
     /// <param name="y">Start of yBounds (inclusive) and end of yBounds (exclusive).</param>
@@ -43,24 +43,24 @@ public static class Randoms
     {
         return new Vector3(Random.Range(x.Item1, x.Item2), Random.Range(y.Item1, y.Item2), 0);
     }
-    
+
     /// <summary>
-    /// Get a random point that is inside or on the surface of the collider.
+    ///     Get a random point that is inside or on the surface of the collider.
     /// </summary>
     public static Vector3 GetRandomPointInsideCollider(this BoxCollider boxCollider)
     {
-        Vector3 extents = boxCollider.size / 2f;
-        Vector3 point = new Vector3(Random.Range(-extents.x, extents.x),
-            Random.Range(-extents.y, extents.y), Random.Range(-extents.z, extents.z));
+        var extents = boxCollider.size / 2f;
+        var point = new Vector3(Random.Range(-extents.x, extents.x),
+            Random.Range(-extents.y, extents.y),
+            Random.Range(-extents.z, extents.z));
 
         return boxCollider.transform.TransformPoint(point);
     }
 
     public static Vector2 GetRandomPointInsideCollider(this BoxCollider2D boxCollider)
     {
-        Vector2 extents = boxCollider.size / 2f;
-        Vector2 point = new Vector2(Random.Range(-extents.x, extents.x),
-            Random.Range(-extents.y, extents.y));
+        var extents = boxCollider.size / 2f;
+        var point = new Vector2(Random.Range(-extents.x, extents.x), Random.Range(-extents.y, extents.y));
 
         return boxCollider.transform.TransformPoint(point);
     }

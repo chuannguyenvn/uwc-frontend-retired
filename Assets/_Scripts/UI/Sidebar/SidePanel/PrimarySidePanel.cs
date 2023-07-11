@@ -7,21 +7,20 @@ namespace UI.Sidebar
     public abstract class PrimarySidePanel : MonoBehaviour
     {
         public SidePanelType SidePanelType;
-        
-        public event Action Shown;
-        public event Action Hidden;
-
-        private bool _isShowing;
-        public bool IsShowing => _isShowing;
 
         [SerializeField] private RectTransform _rectTransform;
         private Tween _anchorPosTween;
+
+        public bool IsShowing { get; private set; }
 
         private void Start()
         {
             ShowInstant();
             HideInstant();
         }
+
+        public event Action Shown;
+        public event Action Hidden;
 
         public virtual void ShowTweened()
         {
@@ -63,13 +62,13 @@ namespace UI.Sidebar
         private void RegisterAsShown()
         {
             transform.SetAsLastSibling();
-            _isShowing = true;
+            IsShowing = true;
             Shown?.Invoke();
         }
 
         private void RegisterAsHidden()
         {
-            _isShowing = false;
+            IsShowing = false;
             Hidden?.Invoke();
         }
     }

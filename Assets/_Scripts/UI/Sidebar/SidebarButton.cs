@@ -8,9 +8,9 @@ namespace UI.Sidebar
     {
         [SerializeField] private Button _button;
         [SerializeField] private TMP_Text _cellTypeText;
+        private PrimarySidePanel _primarySidePanel;
 
         private SidePanelType _sidePanelType;
-        private PrimarySidePanel _primarySidePanel;
 
         public void Init(SidePanelType sidePanelType)
         {
@@ -19,10 +19,7 @@ namespace UI.Sidebar
             _cellTypeText.text = SidebarController.Instance.TypeNames[_sidePanelType];
             _primarySidePanel = SidebarController.Instance.Panels[_sidePanelType];
 
-            if (_primarySidePanel != null)
-            {
-                _button.onClick.AddListener(TogglePanel);
-            }
+            if (_primarySidePanel != null) _button.onClick.AddListener(TogglePanel);
         }
 
         private void TogglePanel()

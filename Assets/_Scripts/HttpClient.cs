@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Text;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -9,7 +10,7 @@ public static class HttpClient
     public enum Type
     {
         GET,
-        POST,
+        POST
     }
 
     private static UnityWebRequest ConstructWebRequest(string endpoint, Type requestType, string bearerKey, object objectToSend = null)
@@ -17,14 +18,14 @@ public static class HttpClient
         var requestTypeString = requestType switch
         {
             Type.GET => "GET",
-            Type.POST => "POST",
+            Type.POST => "POST"
         };
 
-        UnityWebRequest webRequest = new UnityWebRequest("https://" + endpoint, requestTypeString);
+        var webRequest = new UnityWebRequest("https://" + endpoint, requestTypeString);
 
         if (objectToSend != null)
         {
-            byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(JsonConvert.SerializeObject(objectToSend));
+            var jsonToSend = new UTF8Encoding().GetBytes(JsonConvert.SerializeObject(objectToSend));
             webRequest.uploadHandler = new UploadHandlerRaw(jsonToSend);
         }
 
