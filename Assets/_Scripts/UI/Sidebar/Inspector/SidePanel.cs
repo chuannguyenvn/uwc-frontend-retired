@@ -26,7 +26,9 @@ namespace UI.Sidebar
             RegisterAsShown();
 
             _anchorPosTween.Kill();
-            _anchorPosTween = _rectTransform.DOAnchorPosX(0, 0.5f).SetEase(Ease.OutCubic).OnComplete(() => Shown?.Invoke());
+            _anchorPosTween = _rectTransform.DOAnchorPosX(0, VisualManager.Instance.SIDE_PANEL_TRANSITION_TIME)
+                .SetEase(Ease.OutCubic)
+                .OnComplete(() => Shown?.Invoke());
         }
 
         public virtual void HideTweened()
@@ -35,7 +37,8 @@ namespace UI.Sidebar
 
 
             _anchorPosTween.Kill();
-            _anchorPosTween = _rectTransform.DOAnchorPosX(-_rectTransform.rect.size.y - 100, 0.5f)
+            _anchorPosTween = _rectTransform
+                .DOAnchorPosX(-_rectTransform.rect.size.y - 100, VisualManager.Instance.SIDE_PANEL_TRANSITION_TIME)
                 .SetEase(Ease.InCubic)
                 .OnComplete(() => Hidden?.Invoke());
         }

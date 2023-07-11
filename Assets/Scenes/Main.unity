@@ -591,6 +591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d84074f8f47ad3e4c8c09dd057c4aa3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SIDE_PANEL_TRANSITION_TIME: 0.3
   PrimaryFont: {fileID: 11400000, guid: 2818e04119e3c4a46aa7a81178889b2a, type: 2}
 --- !u!4 &765390180
 Transform:
