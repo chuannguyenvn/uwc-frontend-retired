@@ -1,6 +1,6 @@
 ﻿namespace UI.Sidebar
 {
-    public enum SideInspectorType
+    public enum SidePanelType
     {
         Map,
         Tasks,

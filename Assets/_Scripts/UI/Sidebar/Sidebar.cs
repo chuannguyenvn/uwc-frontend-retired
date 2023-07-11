@@ -9,10 +9,10 @@ namespace UI.Sidebar
         private void Start()
         {
             var cellPrefab = ResourceManager.Instance.SidebarCellPrefab;
-            foreach (var type in Enum.GetValues(typeof(SideInspectorType)))
+            foreach (var type in Enum.GetValues(typeof(SidePanelType)))
             {
                 var cell = Instantiate(cellPrefab, transform, false);
-                cell.Init((SideInspectorType)type);
+                cell.Init((SidePanelType)type);
             }
         }
     }

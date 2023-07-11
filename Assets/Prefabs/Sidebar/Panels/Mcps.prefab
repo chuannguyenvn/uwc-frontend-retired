@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 316024125777960376, guid: d7a9db83920a7714c97aee2963cef832, type: 3}
+      propertyPath: _primarySidePanel
+      value: 
+      objectReference: {fileID: 2633777395971077561}
     - target: {fileID: 1326975370820280567, guid: d7a9db83920a7714c97aee2963cef832, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

@@ -1,12 +1,13 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI.Sidebar
 {
     public class SidePanelBackButton : MonoBehaviour
     {
-        [SerializeField] private SidePanel _sidePanel;
+        [FormerlySerializedAs("_sidePanel")] [SerializeField] private PrimarySidePanel _primarySidePanel;
         [SerializeField] private Button _button;
 
         private void Start()
@@ -16,7 +17,7 @@ namespace UI.Sidebar
 
         private void HandleClick()
         {
-            _sidePanel.HideTweened();
+            SidebarController.Instance.PopBackStack();
         }
     }
 }

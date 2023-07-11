@@ -4,8 +4,10 @@ using UnityEngine;
 
 namespace UI.Sidebar
 {
-    public abstract class SidePanel : MonoBehaviour
+    public abstract class PrimarySidePanel : MonoBehaviour
     {
+        public SidePanelType SidePanelType;
+        
         public event Action Shown;
         public event Action Hidden;
 
@@ -35,7 +37,6 @@ namespace UI.Sidebar
         {
             RegisterAsHidden();
 
-
             _anchorPosTween.Kill();
             _anchorPosTween = _rectTransform
                 .DOAnchorPosX(-_rectTransform.rect.size.y - 100, VisualManager.Instance.SIDE_PANEL_TRANSITION_TIME)
@@ -61,14 +62,15 @@ namespace UI.Sidebar
 
         private void RegisterAsShown()
         {
-            SidebarController.Instance.PushBackStack(this);
+            transform.SetAsLastSibling();
             _isShowing = true;
+            Shown?.Invoke();
         }
 
         private void RegisterAsHidden()
         {
-            SidebarController.Instance.PopBackStack();
             _isShowing = false;
+            Hidden?.Invoke();
         }
     }
 }
