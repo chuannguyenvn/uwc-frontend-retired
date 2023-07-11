@@ -1,6 +1,6 @@
 ﻿namespace UI.Sidebar
 {
-    public enum SidebarCellType
+    public enum SideInspectorType
     {
         Map,
         Mcps,

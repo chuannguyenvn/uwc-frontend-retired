@@ -1,21 +1,24 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UI.Sidebar
 {
     public class SidebarManager : Singleton<SidebarManager>
     {
-        public McpsSidebarPanel McpsSidebarPanel;
+        [FormerlySerializedAs("McpsSidebarPanel")] public McpsSideInspector mcpsSideInspector;
 
-        public Dictionary<SidebarCellType, string> TypeNames;
-        public Dictionary<SidebarCellType, SidebarPanel> Panels;
+        public Dictionary<SideInspectorType, string> TypeNames;
+        public Dictionary<SideInspectorType, SideInspector> Panels;
 
+        public SideInspectorType CurrentlyActivatedSidebarType;
+        
         protected override void Awake()
         {
             base.Awake();
             
-            TypeNames = new() {{SidebarCellType.Map, "Map"},{SidebarCellType.Mcps, "Mcps"},};
-            Panels = new() {{SidebarCellType.Map, null}, {SidebarCellType.Mcps, McpsSidebarPanel},};
+            TypeNames = new() {{SideInspectorType.Map, "Map"},{SideInspectorType.Mcps, "Mcps"},};
+            Panels = new() {{SideInspectorType.Map, null}, {SideInspectorType.Mcps, mcpsSideInspector},};
         }
     }
 }
