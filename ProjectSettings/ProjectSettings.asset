@@ -743,6 +743,7 @@ PlayerSettings:
   webGLPowerPreference: 2
   scriptingDefineSymbols:
     Standalone: LETAI_TRUESHADOW;SHAPES_URP
+    WebGL: SHAPES_URP
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

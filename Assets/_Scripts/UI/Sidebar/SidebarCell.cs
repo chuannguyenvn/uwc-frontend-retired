@@ -16,8 +16,8 @@ namespace UI.Sidebar
         {
             _sideInspectorType = sideInspectorType;
 
-            _cellTypeText.text = SidebarManager.Instance.TypeNames[_sideInspectorType];
-            _sidePanel = SidebarManager.Instance.Panels[_sideInspectorType];
+            _cellTypeText.text = SidebarController.Instance.TypeNames[_sideInspectorType];
+            _sidePanel = SidebarController.Instance.Panels[_sideInspectorType];
 
             if (_sidePanel != null)
             {

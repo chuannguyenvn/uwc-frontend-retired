@@ -61,13 +61,13 @@ namespace UI.Sidebar
 
         private void RegisterAsShown()
         {
-            SidebarManager.Instance.PushBackStack(this);
+            SidebarController.Instance.PushBackStack(this);
             _isShowing = true;
         }
 
         private void RegisterAsHidden()
         {
-            SidebarManager.Instance.PopBackStack();
+            SidebarController.Instance.PopBackStack();
             _isShowing = false;
         }
     }
