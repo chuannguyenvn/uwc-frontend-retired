@@ -1,4 +1,6 @@
-﻿namespace Mapbox.Unity.Location
+﻿using UnityEngine;
+
+namespace Mapbox.Unity.Location
 {
 	using Mapbox.Utils;
     using System.Diagnostics;
@@ -21,7 +23,7 @@
 		///<para>Initially 0 this property gets populated after the device has moved far enough to determine a direction</para>
 		///<para>If the device stops moving last heading is kept till a new one can be caluculated. Check <see cref="Mapbox.Unity.Location.IsHeadingUpdated"/></para>
 		///<para>Also needs location services enabled via Input.location.Start()</para>
-		///<para>related <see cref="Mapbox.Unity.Location.DeviceOrientation"/></para>
+		///<para>related <see cref="UnityEngine.DeviceOrientation"/></para>
 		/// </summary>
 		public float UserHeading;
 
