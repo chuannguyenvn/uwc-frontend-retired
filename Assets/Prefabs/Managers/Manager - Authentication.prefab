@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3759490262039412573
+--- !u!1 &4366823042129975503
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,44 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5064538315644904178}
-  - component: {fileID: 4966855537850925996}
+  - component: {fileID: 3252030596380822871}
+  - component: {fileID: 8638839615611162788}
   m_Layer: 0
-  m_Name: Manager - Visuals
+  m_Name: Manager - Authentication
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5064538315644904178
+--- !u!4 &3252030596380822871
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3759490262039412573}
+  m_GameObject: {fileID: 4366823042129975503}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4966855537850925996
+--- !u!114 &8638839615611162788
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3759490262039412573}
-  m_Enabled: 0
+  m_GameObject: {fileID: 4366823042129975503}
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d84074f8f47ad3e4c8c09dd057c4aa3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 4522a369a9e74bcdb72a5f99a2f54aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SIDE_PANEL_TRANSITION_TIME: 0.3
-  PrimaryTextFont: {fileID: 11400000, guid: 2818e04119e3c4a46aa7a81178889b2a, type: 2}
-  PrimaryTextColor: {r: 0.056999996, g: 0.056999996, b: 0.056999996, a: 1}
-  SecondaryTextFont: {fileID: 11400000, guid: 2818e04119e3c4a46aa7a81178889b2a, type: 2}
-  SecondaryTextColor: {r: 0.76, g: 0.76, b: 0.76, a: 1}
+  JwtToken: 

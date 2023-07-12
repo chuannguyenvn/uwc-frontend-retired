@@ -2,6 +2,7 @@
 using Communications.Authentication;
 using Https;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Managers
 {
@@ -13,7 +14,13 @@ namespace Managers
         {
             StartCoroutine(HttpClient.SendRequest(endpoint: Endpoints.DOMAIN + Endpoints.ACCOUNT + Endpoints.LOGIN,
                 requestType: HttpClient.Type.POST,
-                (success) => { Debug.Log(success); },
+                (success) =>
+                {
+                    if (success)
+                    {
+                        SceneManager.LoadScene(1);
+                    }
+                },
                 bearerKey: "",
                 objectToSend: new LoginRequest() {Username = username, Password = password}));
         }
