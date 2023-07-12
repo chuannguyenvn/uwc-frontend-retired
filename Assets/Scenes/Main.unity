@@ -432,7 +432,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 31
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -801,6 +801,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1272226501 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7302692735018544080, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
+  m_PrefabInstance: {fileID: 2003823747}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1473221902
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,7 +860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1055,6 +1060,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1787982550}
     m_Modifications:
+    - target: {fileID: 1245022819659648155, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1245022819659648155, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1245022819659648155, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991661819234228941, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -9.999984
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991661819234228941, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991661819234228941, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3324013503909710933, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1151,16 +1180,53 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mcps
       objectReference: {fileID: 0}
+    - target: {fileID: 8455363454362748217, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
+      propertyPath: m_MovementType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455363454362748217, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
+      propertyPath: m_VerticalScrollbarVisibility
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7302692735018544080, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2003823751}
   m_SourcePrefab: {fileID: 100100000, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
 --- !u!224 &2003823748 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5272672588555396923, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
   m_PrefabInstance: {fileID: 2003823747}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2003823751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272226501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 15
+    m_Right: 15
+    m_Top: 15
+    m_Bottom: 15
+  m_ChildAlignment: 0
+  m_Spacing: 15
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 1
+  m_ChildScaleHeight: 1
+  m_ReverseArrangement: 0
 --- !u!114 &2005085919 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2633777395971077561, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}

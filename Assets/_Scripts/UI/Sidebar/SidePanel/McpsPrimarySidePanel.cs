@@ -11,5 +11,12 @@ namespace UI.Sidebar
         {
             SidePanelType = SidePanelType.Mcps;
         }
+
+        protected override void Start()
+        {
+            base.Start();
+            
+            
+        }
     }
 }

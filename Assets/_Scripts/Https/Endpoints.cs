@@ -6,5 +6,8 @@
 
         public const string ACCOUNT = "account/";
         public const string LOGIN = "login/";
+
+        public const string MCP = "mcp/";
+        public const string GET_ALL_MCPS = "get-all-mcps/";
     }
 }

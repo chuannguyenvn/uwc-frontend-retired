@@ -16,7 +16,7 @@ namespace UI.Sidebar
 
         public bool IsShowing { get; private set; }
 
-        private void Start()
+        protected virtual void Start()
         {
             _titleText.text = SidebarController.Instance.TypeNames[SidePanelType];
             
