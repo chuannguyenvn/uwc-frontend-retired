@@ -12,7 +12,7 @@ namespace Managers
 
         public void TryLogin(string username, string password)
         {
-            StartCoroutine(HttpClient.SendRequest(endpoint: Endpoints.DOMAIN + Endpoints.ACCOUNT + Endpoints.LOGIN,
+            StartCoroutine(HttpClient.SendRequest(endpoint: Endpoints.DOMAIN + Endpoints.Account.LOGIN,
                 requestType: HttpClient.Type.POST,
                 (success) =>
                 {
