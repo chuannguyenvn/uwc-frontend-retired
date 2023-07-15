@@ -16,8 +16,8 @@ namespace UI.Sidebar
 
         public void Init(Mcp mcp)
         {
-            _addressText.text = mcp.Latitude + ", " + mcp.Longitude;
-            _capacityText.text = "Capacity: " + mcp.CurrentLoad + "/" + mcp.Capacity;
+            _addressText.text = mcp.Latitude.ToString("F2") + ", " + mcp.Longitude.ToString("F2");
+            _capacityText.text = "Capacity: " + mcp.CurrentLoad.ToString("F2") + "/" + mcp.Capacity.ToString("F2");
         }
     }
 }

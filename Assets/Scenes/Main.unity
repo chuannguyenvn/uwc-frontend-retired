@@ -1096,12 +1096,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 1787982550}
     m_Modifications:
     - target: {fileID: 566729949964428309, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
+      propertyPath: m_Padding.m_Top
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 566729949964428309, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
+      propertyPath: m_Padding.m_Left
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 566729949964428309, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
       propertyPath: m_ChildScaleWidth
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 566729949964428309, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
+      propertyPath: m_Padding.m_Right
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 566729949964428309, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
       propertyPath: m_ChildScaleHeight
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 566729949964428309, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
+      propertyPath: m_Padding.m_Bottom
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 566729949964428309, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
       propertyPath: m_ChildControlWidth
@@ -1121,11 +1137,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1245022819659648155, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1245022819659648155, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1245022819659648155, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1135,6 +1151,10 @@ PrefabInstance:
       propertyPath: _listElementPrefab
       value: 
       objectReference: {fileID: 1719406431967243202, guid: 0a53dcf6adb02ce4399008976966462d, type: 3}
+    - target: {fileID: 2991661819234228941, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2991661819234228941, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -1234,6 +1254,10 @@ PrefabInstance:
     - target: {fileID: 6925841954880657351, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
       propertyPath: m_Name
       value: Mcps
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455363454362748217, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
+      propertyPath: m_VerticalScrollbarVisibility
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
