@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -16,12 +17,14 @@ namespace UI.Sidebar
 
         public bool IsShowing { get; private set; }
 
-        protected virtual void Start()
+        protected virtual IEnumerator Start()
         {
             _titleText.text = SidebarController.Instance.TypeNames[SidePanelType];
             
             ShowInstant();
             HideInstant();
+            
+            yield break;
         }
 
         public event Action Shown;

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI.Sidebar
@@ -12,11 +13,9 @@ namespace UI.Sidebar
             SidePanelType = SidePanelType.Settings;
         }
 
-        protected override void Start()
+        protected override IEnumerator Start()
         {
-            base.Start();
-            
-            
+            yield return base.Start();
         }
     }
 }

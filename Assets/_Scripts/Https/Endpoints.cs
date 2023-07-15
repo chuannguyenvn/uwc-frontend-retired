@@ -1,180 +1,177 @@
 ﻿using Models.Types;
 
-namespace Https
+public static class Endpoints
 {
-    public static class Endpoints
+    public const string DOMAIN = "test11111a435345.azurewebsites.net/";
+
+    public static class Account
     {
-        public const string DOMAIN = "test11111a435345.azurewebsites.net/";
+        private const string ACCOUNT = "account/";
 
-        public static class Account
+        public const string LOGIN = DOMAIN + ACCOUNT + "login/";
+        public const string REGISTER = DOMAIN + ACCOUNT + "register/";
+    }
+
+    public static class Administration
+    {
+        private const string ADMINISTRATION = "administration/";
+
+        public static string DeleteAccount(int accountId)
         {
-            private const string ACCOUNT = "account/";
+            return DOMAIN + ADMINISTRATION + $"delete-account/{accountId}";
+        }
+    }
 
-            public const string LOGIN = ACCOUNT + "login/";
-            public const string REGISTER = ACCOUNT + "register/";
+    public static class DrivingHistory
+    {
+        private const string DRIVING_HISTORY = "drivinghistory/";
+
+        public const string ADD = DOMAIN + DRIVING_HISTORY + "add";
+        public const string ALL = DOMAIN + DRIVING_HISTORY + "all";
+
+        public static string Delete(int drivingHistoryId)
+        {
+            return DOMAIN + DRIVING_HISTORY + $"delete/{drivingHistoryId}";
+        }
+    }
+
+    public static class DrivingLicense
+    {
+        private const string DRIVING_LICENSE = "drivinglicense/";
+
+        public const string ADD = DOMAIN + DRIVING_LICENSE + "add";
+
+        public static string Get(int driverId)
+        {
+            return DOMAIN + DRIVING_LICENSE + $"get/{driverId}";
         }
 
-        public static class Administration
-        {
-            private const string ADMINISTRATION = "administration/";
+        public const string UPDATE = DOMAIN + DRIVING_LICENSE + "update";
 
-            public static string DeleteAccount(int accountId)
-            {
-                return $"{ADMINISTRATION}delete-account/{accountId}";
-            }
+        public static string Delete(int drivingLicenseId)
+        {
+            return DOMAIN + DRIVING_LICENSE + $"delete/{drivingLicenseId}";
         }
 
-        public static class DrivingHistory
+        public const string DELETE_OUTDATED = DOMAIN + DRIVING_LICENSE + "delete-outdated";
+    }
+
+    public static class Mcp
+    {
+        private const string MCP = "mcp/";
+
+        public const string ADD = DOMAIN + MCP + "add";
+
+        public static string Empty(int mcpId)
         {
-            private const string DRIVING_HISTORY = "drivinghistory/";
-
-            public const string ADD = DRIVING_HISTORY + "add";
-            public const string ALL = DRIVING_HISTORY + "all";
-
-            public static string Delete(int drivingHistoryId)
-            {
-                return $"{DRIVING_HISTORY}delete/{drivingHistoryId}";
-            }
+            return DOMAIN + MCP + $"empty/{mcpId}";
         }
 
-        public static class DrivingLicense
+        public const string GET_FULL = DOMAIN + MCP + "get/full";
+        public const string GET_IN_RANGE = DOMAIN + MCP + "get/in-range";
+        public const string GET_ALL = DOMAIN + MCP + "get/all";
+
+        public static string Delete(int mcpId)
         {
-            private const string DRIVING_LICENSE = "drivinglicense/";
-
-            public const string ADD = DRIVING_LICENSE + "add";
-
-            public static string Get(int driverId)
-            {
-                return $"{DRIVING_LICENSE}get/{driverId}";
-            }
-
-            public const string UPDATE = DRIVING_LICENSE + "update";
-
-            public static string Delete(int drivingLicenseId)
-            {
-                return $"{DRIVING_LICENSE}delete/{drivingLicenseId}";
-            }
-
-            public const string DELETE_OUTDATED = DRIVING_LICENSE + "delete-outdated";
+            return DOMAIN + MCP + $"delete/{mcpId}";
         }
 
-        public static class Mcp
+        public const string UPDATE_LOAD = DOMAIN + MCP + "update-load";
+    }
+
+    public static class Message
+    {
+        private const string MESSAGE = "message/";
+
+        public const string ADD = DOMAIN + MESSAGE + "add";
+
+        public static string Inbox(int userId)
         {
-            private const string MCP = "mcp/";
-
-            public const string ADD = MCP + "add";
-
-            public static string Empty(int mcpId)
-            {
-                return $"{MCP}empty/{mcpId}";
-            }
-
-            public const string GET_FULL = MCP + "get/full";
-            public const string GET_IN_RANGE = MCP + "get/in-range";
-            public const string GET_ALL = MCP + "get/all";
-
-            public static string Delete(int mcpId)
-            {
-                return $"{MCP}delete/{mcpId}";
-            }
-
-            public const string UPDATE_LOAD = MCP + "update-load";
+            return DOMAIN + MESSAGE + $"inbox/{userId}";
         }
 
-        public static class Message
+        public const string INBOX_LATEST = DOMAIN + MESSAGE + "inbox/latest";
+    }
+
+    public static class Route
+    {
+        private const string ROUTE = "route/";
+
+        public const string ADD = DOMAIN + ROUTE + "add";
+        public const string UPDATE = DOMAIN + ROUTE + "update";
+    }
+
+    public static class Settings
+    {
+        private const string SETTINGS = "settings/";
+
+        public const string UPDATE_PASSWORD = DOMAIN + SETTINGS + "update/password";
+        public const string UPDATE_SETTINGS = DOMAIN + SETTINGS + "update/settings";
+    }
+
+    public static class Task
+    {
+        private const string TASK = "task/";
+
+        public const string ADD = DOMAIN + TASK + "add";
+
+        public static string GetAll(int employeeId)
         {
-            private const string MESSAGE = "message/";
-
-            public const string ADD = MESSAGE + "add";
-
-            public static string Inbox(int userId)
-            {
-                return $"{MESSAGE}inbox/{userId}";
-            }
-
-            public const string INBOX_LATEST = MESSAGE + "inbox/latest";
+            return DOMAIN + TASK + $"get/all/{employeeId}";
         }
 
-        public static class Route
+        public static string DeleteAll(int employeeId)
         {
-            private const string ROUTE = "route/";
-
-            public const string ADD = ROUTE + "add";
-            public const string UPDATE = ROUTE + "update";
+            return DOMAIN + TASK + $"delete/all/{employeeId}";
         }
 
-        public static class Settings
+        public static string Delete(int taskId)
         {
-            private const string SETTINGS = "settings/";
-
-            public const string UPDATE_PASSWORD = SETTINGS + "update/password";
-            public const string UPDATE_SETTINGS = SETTINGS + "update/settings";
+            return DOMAIN + TASK + $"delete/{taskId}";
         }
 
-        public static class Task
+        public const string UPDATE = DOMAIN + TASK + "update";
+        public const string GET_FREE_EMPLOYEES = DOMAIN + TASK + "free";
+    }
+
+    public static class UserProfile
+    {
+        private const string USER_PROFILE = "userprofile/";
+
+        public const string ADD_SUPERVISOR = DOMAIN + USER_PROFILE + "add/supervisor";
+        public const string ADD_CLEANER = DOMAIN + USER_PROFILE + "add/cleaner";
+        public const string ADD_DRIVER = DOMAIN + USER_PROFILE + "add/driver";
+
+        public static string Delete(int userProfileId)
         {
-            private const string TASK = "task/";
-
-            public const string ADD = TASK + "add";
-
-            public static string GetAll(int employeeId)
-            {
-                return $"{TASK}get/all/{employeeId}";
-            }
-
-            public static string DeleteAll(int employeeId)
-            {
-                return $"{TASK}delete/all/{employeeId}";
-            }
-
-            public static string Delete(int taskId)
-            {
-                return $"{TASK}delete/{taskId}";
-            }
-
-            public const string UPDATE = TASK + "update";
-            public const string GET_FREE_EMPLOYEES = TASK + "free";
+            return DOMAIN + USER_PROFILE + $"delete/{userProfileId}";
         }
 
-        public static class UserProfile
+        public const string UPDATE = DOMAIN + USER_PROFILE + "update";
+        public const string GET_ALL = DOMAIN + USER_PROFILE + "all";
+
+        public static string GetInfo(int userProfileId)
         {
-            private const string USER_PROFILE = "userprofile/";
-
-            public const string ADD_SUPERVISOR = USER_PROFILE + "add/supervisor";
-            public const string ADD_CLEANER = USER_PROFILE + "add/cleaner";
-            public const string ADD_DRIVER = USER_PROFILE + "add/driver";
-
-            public static string Delete(int userProfileId)
-            {
-                return $"{USER_PROFILE}delete/{userProfileId}";
-            }
-
-            public const string UPDATE = USER_PROFILE + "update";
-            public const string GET_ALL = USER_PROFILE + "all";
-
-            public static string GetInfo(int userProfileId)
-            {
-                return $"{USER_PROFILE}info/{userProfileId}";
-            }
-
-            public static string GetAllWithRole(UserRole role)
-            {
-                return $"{USER_PROFILE}with-role/{role}";
-            }
+            return DOMAIN + USER_PROFILE + $"info/{userProfileId}";
         }
 
-        public static class Vehicle
+        public static string GetAllWithRole(UserRole role)
         {
-            private const string VEHICLE = "vehicle/";
+            return DOMAIN + USER_PROFILE + $"with-role/{role}";
+        }
+    }
 
-            public const string ADD = VEHICLE + "add";
-            public const string GET_ALL = VEHICLE + "get/all";
-            public const string UPDATE = VEHICLE + "update";
+    public static class Vehicle
+    {
+        private const string VEHICLE = "vehicle/";
 
-            public static string Delete(int vehicleId)
-            {
-                return $"{VEHICLE}delete/{vehicleId}";
-            }
+        public const string ADD = DOMAIN + VEHICLE + "add";
+        public const string GET_ALL = DOMAIN + VEHICLE + "get/all";
+        public const string UPDATE = DOMAIN + VEHICLE + "update";
+
+        public static string Delete(int vehicleId)
+        {
+            return DOMAIN + VEHICLE + $"delete/{vehicleId}";
         }
     }
 }

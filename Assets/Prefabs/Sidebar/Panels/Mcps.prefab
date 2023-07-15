@@ -20,6 +20,30 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1571647593954588271, guid: d7a9db83920a7714c97aee2963cef832, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571647593954588271, guid: d7a9db83920a7714c97aee2963cef832, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571647593954588271, guid: d7a9db83920a7714c97aee2963cef832, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3246017888948920377, guid: d7a9db83920a7714c97aee2963cef832, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3246017888948920377, guid: d7a9db83920a7714c97aee2963cef832, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3246017888948920377, guid: d7a9db83920a7714c97aee2963cef832, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6653665109621357413, guid: d7a9db83920a7714c97aee2963cef832, type: 3}
       propertyPath: m_Name
       value: Mcps
