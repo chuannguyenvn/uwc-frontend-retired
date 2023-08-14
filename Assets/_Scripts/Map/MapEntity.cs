@@ -7,9 +7,6 @@ namespace Map
 {
     public class MapEntity : MonoBehaviour
     {
-        [SerializeField] private RectTransform _rectTransform;
-        [SerializeField] private Button _button;
-
         private Coordinate _coordinate;
 
         public Coordinate Coordinate => _coordinate;
@@ -17,7 +14,6 @@ namespace Map
         private void Start()
         {
             MapEntityController.Instance.MapUpdated += UpdatePosition;
-            _button.onClick.AddListener(ButtonClickHandler);
         }
 
         public void Init(Coordinate coordinate)
@@ -48,6 +44,11 @@ namespace Map
         protected virtual void ButtonClickHandler()
         {
             Debug.Log("Clicked.");
+        }
+
+        private void OnMouseUp()
+        {
+            ButtonClickHandler();
         }
     }
 }
