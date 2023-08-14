@@ -1,9 +1,7 @@
-﻿using System;
-using Types;
+﻿using Types;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace Map
+namespace Map.Entity
 {
     public class MapEntity : MonoBehaviour
     {
@@ -29,6 +27,7 @@ namespace Map
         public void UpdateCoordinate(Coordinate coordinate)
         {
             _coordinate = coordinate;
+            UpdatePosition();
         }
 
         public void UpdateCoordinate(double latitude, double longitude)

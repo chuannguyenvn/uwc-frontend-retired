@@ -1,4 +1,4 @@
-﻿namespace Map
+﻿namespace Map.Entity
 {
     public class VehicleMapEntity : MapEntity
     {
