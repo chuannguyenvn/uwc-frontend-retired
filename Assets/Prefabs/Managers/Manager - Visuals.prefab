@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4966855537850925996
 MonoBehaviour:
@@ -49,3 +49,6 @@ MonoBehaviour:
   PrimaryTextColor: {r: 0.056999996, g: 0.056999996, b: 0.056999996, a: 1}
   SecondaryTextFont: {fileID: 11400000, guid: 2818e04119e3c4a46aa7a81178889b2a, type: 2}
   SecondaryTextColor: {r: 0.76, g: 0.76, b: 0.76, a: 1}
+  PrimaryPanelColor: {r: 0.23921569, g: 0.6392157, b: 0.3647059, a: 1}
+  SecondaryPanelColor: {r: 0.24313726, g: 0.56078434, b: 0.34117648, a: 1}
+  BackgroundPanelColor: {r: 1, g: 1, b: 1, a: 1}

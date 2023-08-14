@@ -10,4 +10,8 @@ public class VisualManager : PersistentSingleton<VisualManager>
     
     public TMP_FontAsset SecondaryTextFont;
     public Color SecondaryTextColor;
+
+    public Color PrimaryPanelColor;
+    public Color SecondaryPanelColor;
+    public Color BackgroundPanelColor;
 }

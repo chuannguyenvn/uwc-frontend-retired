@@ -5,7 +5,6 @@ namespace UI.Sidebar
 {
     public class SidebarController : Singleton<SidebarController>
     {
-        [SerializeField] private TasksPrimarySidePanel _tasksPrimarySidePanel;
         [SerializeField] private McpsPrimarySidePanel _mcpsPrimarySidePanel;
         [SerializeField] private VehiclesPrimarySidePanel _vehiclesPrimarySidePanel;
 
@@ -23,27 +22,23 @@ namespace UI.Sidebar
             TypeNames = new Dictionary<SidePanelType, string>
             {
                 {SidePanelType.Map, "Map"},
-                {SidePanelType.Tasks, "Tasks"},
                 {SidePanelType.Workers, "Workers"},
                 {SidePanelType.Mcps, "Mcps"},
                 {SidePanelType.Vehicles, "Vehicles"},
                 {SidePanelType.Reports, "Reports"},
                 {SidePanelType.Messaging, "Messaging"},
                 {SidePanelType.Settings, "Settings"},
-                {SidePanelType.Helps, "Helps"}
             };
 
             Panels = new Dictionary<SidePanelType, PrimarySidePanel>
             {
                 {SidePanelType.Map, null},
-                {SidePanelType.Tasks, _tasksPrimarySidePanel},
                 {SidePanelType.Workers, null},
                 {SidePanelType.Mcps, _mcpsPrimarySidePanel},
                 {SidePanelType.Vehicles, _vehiclesPrimarySidePanel},
                 {SidePanelType.Reports, null},
                 {SidePanelType.Messaging, null},
                 {SidePanelType.Settings, null},
-                {SidePanelType.Helps, null}
             };
         }
 

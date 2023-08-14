@@ -275,6 +275,7 @@ GameObject:
   - component: {fileID: 5552387408622506874}
   - component: {fileID: 3003424839192103930}
   - component: {fileID: 1650322049214247659}
+  - component: {fileID: 337052939286215815}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -385,6 +386,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 0}
+--- !u!114 &337052939286215815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6348918041178828957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 961302e8cefb4f329440ee2d2ed0ba3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _panelType: 0
 --- !u!1 &6418607913905391474
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,7 +435,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -9.999984, y: 30}
+  m_SizeDelta: {x: -9.999984, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2440036291409772138
 MonoBehaviour:
@@ -475,6 +489,7 @@ GameObject:
   - component: {fileID: 5760259876329847477}
   - component: {fileID: 1145039996877877633}
   - component: {fileID: 6010731741802636768}
+  - component: {fileID: 359907884082577309}
   m_Layer: 5
   m_Name: Side Panel
   m_TagString: Untagged
@@ -572,6 +587,19 @@ MonoBehaviour:
   baked: 0
   modifiedFromInspector: 0
   bakedShadows: []
+--- !u!114 &359907884082577309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6653665109621357413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 961302e8cefb4f329440ee2d2ed0ba3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _panelType: 0
 --- !u!1 &6702416074055735606
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,9 +882,9 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &8380629971313650444
 CanvasRenderer:
