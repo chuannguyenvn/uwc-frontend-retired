@@ -167,6 +167,7 @@ public static class Endpoints
 
         public const string ADD = DOMAIN + VEHICLE + "add";
         public const string GET_ALL = DOMAIN + VEHICLE + "get/all";
+        public const string GET_ALL_LOCATION = DOMAIN + VEHICLE + "get/all/location";
         public const string UPDATE = DOMAIN + VEHICLE + "update";
 
         public static string Delete(int vehicleId)

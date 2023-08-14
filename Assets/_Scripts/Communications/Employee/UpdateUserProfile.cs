@@ -1,6 +1,6 @@
 using System;
-using Models.Types;
 using Newtonsoft.Json;
+using Types;
 
 namespace Communications.Employee
 {
