@@ -22,7 +22,10 @@ namespace Https
             var requestTypeString = requestRequestType switch
             {
                 RequestType.GET => "GET",
-                RequestType.POST => "POST"
+                RequestType.POST => "POST",
+                RequestType.PUT => "PUT",
+                RequestType.DELETE => "DELETE",
+                _ => throw new ArgumentOutOfRangeException(nameof(requestRequestType), requestRequestType, null)
             };
 
             var webRequest = new UnityWebRequest("https://" + endpoint, requestTypeString);
