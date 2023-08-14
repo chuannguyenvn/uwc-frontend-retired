@@ -1810,8 +1810,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _options:
     locationOptions:
-      latitudeLongitude: 37.7648, -122.463
-      zoom: 10
+      latitudeLongitude: 10.7692519816469, 106.65980918292
+      zoom: 13
     extentOptions:
       extentType: 0
       defaultExtents:

@@ -16,9 +16,7 @@ public class MapEntityController : Singleton<MapEntityController>
     public event Action MapUpdated;
 
     [SerializeField] AbstractMap _abstractMap;
-
-    [SerializeField] float _spawnScale = 100f;
-
+    
     [SerializeField] MapEntity _entityPrefab;
 
     List<GameObject> _spawnedObjects;
@@ -30,11 +28,13 @@ public class MapEntityController : Singleton<MapEntityController>
     private IEnumerator Start()
     {
         _abstractMap.OnUpdated += () => MapUpdated?.Invoke();
-
+            
         var initializeMcpsCoroutine = InitializeMcps();
         var initializeVehiclesCoroutine = InitializeVehicles();
 
         yield return new WaitForAll(this, initializeMcpsCoroutine, initializeVehiclesCoroutine);
+
+        MapUpdated?.Invoke();
 
         _vehicleLocationRefreshTimer = new Timer(RefreshVehicles, null, TimeSpan.Zero, TimeSpan.FromSeconds(5));
     }
