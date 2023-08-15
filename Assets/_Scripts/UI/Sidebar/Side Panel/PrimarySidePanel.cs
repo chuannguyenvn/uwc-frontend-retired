@@ -45,7 +45,7 @@ namespace UI.Sidebar.SidePanel
             RegisterAsHidden();
 
             _anchorPosTween.Kill();
-            _anchorPosTween = _rectTransform.DOAnchorPosX(-_rectTransform.sizeDelta.x, VisualManager.Instance.SIDE_PANEL_TRANSITION_TIME)
+            _anchorPosTween = _rectTransform.DOAnchorPosX(-_rectTransform.sizeDelta.x - 50, VisualManager.Instance.SIDE_PANEL_TRANSITION_TIME)
                 .SetEase(Ease.InCubic)
                 .OnComplete(() => Hidden?.Invoke());
         }
@@ -63,7 +63,7 @@ namespace UI.Sidebar.SidePanel
             RegisterAsHidden();
 
             _anchorPosTween.Kill();
-            _rectTransform.anchoredPosition = _rectTransform.anchoredPosition.WithX(-_rectTransform.sizeDelta.x);
+            _rectTransform.anchoredPosition = _rectTransform.anchoredPosition.WithX(-_rectTransform.sizeDelta.x - 50);
         }
 
         private void RegisterAsShown()
