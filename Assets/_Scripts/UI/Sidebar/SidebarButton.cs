@@ -36,11 +36,17 @@ namespace UI.Sidebar
             _cellTypeText.text = SidebarController.Instance.TypeNames[_sidePanelType];
             _primarySidePanel = SidebarController.Instance.Panels[_sidePanelType];
 
-            if (_primarySidePanel != null) _button.onClick.AddListener(TogglePanel);
+            if (_primarySidePanel != null || _sidePanelType == SidePanelType.Map) _button.onClick.AddListener(TogglePanel);
         }
 
         private void TogglePanel()
         {
+            if (_sidePanelType == SidePanelType.Map)
+            {
+                SidebarController.Instance.PopAllBackStack();
+                return;
+            }
+            
             if (!_primarySidePanel.IsShowing) SidebarController.Instance.PushBackStack(_primarySidePanel);
             else SidebarController.Instance.PopAllBackStack();
         }
