@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Https;
-using Models;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Sidebar
+namespace UI.Sidebar.SidePanel.Mcp
 {
     public class McpsPrimarySidePanel : PrimarySidePanel
     {
@@ -21,16 +20,16 @@ namespace UI.Sidebar
         {
             yield return base.Start();
 
-            yield return HttpClient.SendRequest<List<Mcp>>(endpoint: Endpoints.Mcp.GET_ALL,
-                requestRequestType: HttpClient.RequestType.GET,
+            yield return HttpClient.SendRequest<List<Models.Mcp>>(Endpoints.Mcp.GET_ALL,
+                HttpClient.RequestType.GET,
                 (success, result) =>
                 {
                     if (success) InitList(result);
                 },
-                bearerKey: "");
+                "");
         }
 
-        private void InitList(List<Mcp> mcps)
+        private void InitList(List<Models.Mcp> mcps)
         {
             foreach (var mcp in mcps)
             {

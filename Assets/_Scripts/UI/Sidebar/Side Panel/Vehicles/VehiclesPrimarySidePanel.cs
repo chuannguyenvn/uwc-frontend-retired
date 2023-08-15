@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Sidebar
+namespace UI.Sidebar.SidePanel.Vehicles
 {
     public class VehiclesPrimarySidePanel : PrimarySidePanel
     {

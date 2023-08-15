@@ -15,22 +15,22 @@ namespace Types
 
         public static Coordinate operator +(Coordinate a, Coordinate b)
         {
-            return new(a.Latitude + b.Latitude, a.Longitude + b.Longitude);
+            return new Coordinate(a.Latitude + b.Latitude, a.Longitude + b.Longitude);
         }
 
         public static Coordinate operator -(Coordinate a, Coordinate b)
         {
-            return new(a.Latitude - b.Latitude, a.Longitude - b.Longitude);
+            return new Coordinate(a.Latitude - b.Latitude, a.Longitude - b.Longitude);
         }
 
         public static Coordinate operator *(Coordinate a, float b)
         {
-            return new(a.Latitude * b, a.Latitude * b);
+            return new Coordinate(a.Latitude * b, a.Latitude * b);
         }
 
         public static Coordinate operator *(Coordinate a, double b)
         {
-            return new(a.Latitude * b, a.Latitude * b);
+            return new Coordinate(a.Latitude * b, a.Latitude * b);
         }
 
         public static Coordinate Lerp(Coordinate from, Coordinate to, float t)

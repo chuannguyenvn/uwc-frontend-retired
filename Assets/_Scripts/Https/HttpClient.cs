@@ -14,10 +14,11 @@ namespace Https
             GET,
             POST,
             PUT,
-            DELETE,
+            DELETE
         }
 
-        private static UnityWebRequest ConstructWebRequest(string endpoint, RequestType requestRequestType, string bearerKey, object objectToSend = null)
+        private static UnityWebRequest ConstructWebRequest(string endpoint, RequestType requestRequestType, string bearerKey,
+            object objectToSend = null)
         {
             var requestTypeString = requestRequestType switch
             {
@@ -62,8 +63,8 @@ namespace Https
             webRequest.Dispose();
         }
 
-        public static IEnumerator SendRequest<T>(string endpoint, RequestType requestRequestType, Action<bool, T> callback, string bearerKey,
-            object objectToSend = null) where T : new()
+        public static IEnumerator SendRequest<T>(string endpoint, RequestType requestRequestType, Action<bool, T> callback,
+            string bearerKey, object objectToSend = null) where T : new()
         {
             var webRequest = ConstructWebRequest(endpoint, requestRequestType, bearerKey, objectToSend);
 

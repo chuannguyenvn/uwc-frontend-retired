@@ -4,6 +4,6 @@
     {
         FrontLoader,
         SideLoader,
-        RearLoader,
+        RearLoader
     }
 }

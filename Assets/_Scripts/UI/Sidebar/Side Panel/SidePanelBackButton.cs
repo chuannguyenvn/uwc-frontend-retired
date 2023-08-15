@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Sidebar
+namespace UI.Sidebar.SidePanel
 {
     public class SidePanelBackButton : MonoBehaviour
     {

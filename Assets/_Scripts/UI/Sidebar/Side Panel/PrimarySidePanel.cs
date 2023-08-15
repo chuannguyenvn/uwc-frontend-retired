@@ -4,7 +4,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
-namespace UI.Sidebar
+namespace UI.Sidebar.SidePanel
 {
     public abstract class PrimarySidePanel : MonoBehaviour
     {
@@ -12,7 +12,7 @@ namespace UI.Sidebar
 
         [SerializeField] protected RectTransform _rectTransform;
         [SerializeField] protected TMP_Text _titleText;
-        
+
         private Tween _anchorPosTween;
 
         public bool IsShowing { get; private set; }
@@ -22,7 +22,7 @@ namespace UI.Sidebar
             _titleText.text = SidebarController.Instance.TypeNames[SidePanelType];
 
             yield return null;
-            
+
             ShowInstant();
             HideInstant();
         }
@@ -45,8 +45,7 @@ namespace UI.Sidebar
             RegisterAsHidden();
 
             _anchorPosTween.Kill();
-            _anchorPosTween = _rectTransform
-                .DOAnchorPosX(-_rectTransform.sizeDelta.x, VisualManager.Instance.SIDE_PANEL_TRANSITION_TIME)
+            _anchorPosTween = _rectTransform.DOAnchorPosX(-_rectTransform.sizeDelta.x, VisualManager.Instance.SIDE_PANEL_TRANSITION_TIME)
                 .SetEase(Ease.InCubic)
                 .OnComplete(() => Hidden?.Invoke());
         }

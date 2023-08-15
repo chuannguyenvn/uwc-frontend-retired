@@ -8,6 +8,6 @@
         Vehicles,
         Reports,
         Messaging,
-        Settings,
+        Settings
     }
 }

@@ -4,6 +4,6 @@
     {
         Primary,
         Secondary,
-        Background,
+        Background
     }
 }

@@ -1,20 +1,30 @@
 ﻿using System.Collections.Generic;
+using UI.Sidebar.SidePanel;
+using UI.Sidebar.SidePanel.Mcp;
+using UI.Sidebar.SidePanel.Messaging;
+using UI.Sidebar.SidePanel.Reports;
+using UI.Sidebar.SidePanel.Settings;
+using UI.Sidebar.SidePanel.Vehicles;
+using UI.Sidebar.SidePanel.Workers;
 using UnityEngine;
 
 namespace UI.Sidebar
 {
     public class SidebarController : Singleton<SidebarController>
     {
+        [SerializeField] private WorkersPrimarySidePanel _workersPrimarySidePanel;
         [SerializeField] private McpsPrimarySidePanel _mcpsPrimarySidePanel;
         [SerializeField] private VehiclesPrimarySidePanel _vehiclesPrimarySidePanel;
         [SerializeField] private ReportPrimarySidePanel _reportPrimarySidePanel;
-
-        public SidePanelType CurrentlyActivatedSidebarType;
+        [SerializeField] private MessagingPrimarySidePanel _messagingPrimarySidePanel;
+        [SerializeField] private SettingsPrimarySidePanel _settingsPrimarySidePanel;
 
         private readonly Stack<PrimarySidePanel> _backStack = new();
         public Dictionary<SidePanelType, PrimarySidePanel> Panels;
 
         public Dictionary<SidePanelType, string> TypeNames;
+
+        public SidePanelType CurrentlyActivatedSidebarType { get; private set; }
 
         protected override void Awake()
         {
@@ -28,18 +38,18 @@ namespace UI.Sidebar
                 {SidePanelType.Vehicles, "Vehicles"},
                 {SidePanelType.Reports, "Reports"},
                 {SidePanelType.Messaging, "Messaging"},
-                {SidePanelType.Settings, "Settings"},
+                {SidePanelType.Settings, "Settings"}
             };
 
             Panels = new Dictionary<SidePanelType, PrimarySidePanel>
             {
                 {SidePanelType.Map, null},
-                {SidePanelType.Workers, null},
+                {SidePanelType.Workers, _workersPrimarySidePanel},
                 {SidePanelType.Mcps, _mcpsPrimarySidePanel},
                 {SidePanelType.Vehicles, _vehiclesPrimarySidePanel},
                 {SidePanelType.Reports, _reportPrimarySidePanel},
-                {SidePanelType.Messaging, null},
-                {SidePanelType.Settings, null},
+                {SidePanelType.Messaging, _messagingPrimarySidePanel},
+                {SidePanelType.Settings, _settingsPrimarySidePanel}
             };
         }
 

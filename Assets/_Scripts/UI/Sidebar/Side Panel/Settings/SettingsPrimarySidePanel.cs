@@ -2,15 +2,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Sidebar
+namespace UI.Sidebar.SidePanel.Settings
 {
-    public class MessagingPrimarySidePanel : PrimarySidePanel
+    public class SettingsPrimarySidePanel : PrimarySidePanel
     {
         [SerializeField] private ScrollRect _scrollRect;
 
-        public MessagingPrimarySidePanel()
+        public SettingsPrimarySidePanel()
         {
-            SidePanelType = SidePanelType.Messaging;
+            SidePanelType = SidePanelType.Settings;
         }
 
         protected override IEnumerator Start()

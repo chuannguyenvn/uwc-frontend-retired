@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TMPro;
+using UI.Sidebar.SidePanel;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -46,7 +47,7 @@ namespace UI.Sidebar
                 SidebarController.Instance.PopAllBackStack();
                 return;
             }
-            
+
             if (!_primarySidePanel.IsShowing) SidebarController.Instance.PushBackStack(_primarySidePanel);
             else SidebarController.Instance.PopAllBackStack();
         }

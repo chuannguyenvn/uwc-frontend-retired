@@ -41,19 +41,19 @@ public static class Endpoints
 
         public const string ADD = DOMAIN + DRIVING_LICENSE + "add";
 
+        public const string UPDATE = DOMAIN + DRIVING_LICENSE + "update";
+
+        public const string DELETE_OUTDATED = DOMAIN + DRIVING_LICENSE + "delete-outdated";
+
         public static string Get(int driverId)
         {
             return DOMAIN + DRIVING_LICENSE + $"get/{driverId}";
         }
 
-        public const string UPDATE = DOMAIN + DRIVING_LICENSE + "update";
-
         public static string Delete(int drivingLicenseId)
         {
             return DOMAIN + DRIVING_LICENSE + $"delete/{drivingLicenseId}";
         }
-
-        public const string DELETE_OUTDATED = DOMAIN + DRIVING_LICENSE + "delete-outdated";
     }
 
     public static class Mcp
@@ -62,21 +62,21 @@ public static class Endpoints
 
         public const string ADD = DOMAIN + MCP + "add";
 
+        public const string GET_FULL = DOMAIN + MCP + "get/full";
+        public const string GET_IN_RANGE = DOMAIN + MCP + "get/in-range";
+        public const string GET_ALL = DOMAIN + MCP + "get/all";
+
+        public const string UPDATE_LOAD = DOMAIN + MCP + "update-load";
+
         public static string Empty(int mcpId)
         {
             return DOMAIN + MCP + $"empty/{mcpId}";
         }
 
-        public const string GET_FULL = DOMAIN + MCP + "get/full";
-        public const string GET_IN_RANGE = DOMAIN + MCP + "get/in-range";
-        public const string GET_ALL = DOMAIN + MCP + "get/all";
-
         public static string Delete(int mcpId)
         {
             return DOMAIN + MCP + $"delete/{mcpId}";
         }
-
-        public const string UPDATE_LOAD = DOMAIN + MCP + "update-load";
     }
 
     public static class Message
@@ -85,12 +85,12 @@ public static class Endpoints
 
         public const string ADD = DOMAIN + MESSAGE + "add";
 
+        public const string INBOX_LATEST = DOMAIN + MESSAGE + "inbox/latest";
+
         public static string Inbox(int userId)
         {
             return DOMAIN + MESSAGE + $"inbox/{userId}";
         }
-
-        public const string INBOX_LATEST = DOMAIN + MESSAGE + "inbox/latest";
     }
 
     public static class Route
@@ -115,6 +115,9 @@ public static class Endpoints
 
         public const string ADD = DOMAIN + TASK + "add";
 
+        public const string UPDATE = DOMAIN + TASK + "update";
+        public const string GET_FREE_EMPLOYEES = DOMAIN + TASK + "free";
+
         public static string GetAll(int employeeId)
         {
             return DOMAIN + TASK + $"get/all/{employeeId}";
@@ -129,9 +132,6 @@ public static class Endpoints
         {
             return DOMAIN + TASK + $"delete/{taskId}";
         }
-
-        public const string UPDATE = DOMAIN + TASK + "update";
-        public const string GET_FREE_EMPLOYEES = DOMAIN + TASK + "free";
     }
 
     public static class UserProfile
@@ -142,13 +142,13 @@ public static class Endpoints
         public const string ADD_CLEANER = DOMAIN + USER_PROFILE + "add/cleaner";
         public const string ADD_DRIVER = DOMAIN + USER_PROFILE + "add/driver";
 
+        public const string UPDATE = DOMAIN + USER_PROFILE + "update";
+        public const string GET_ALL = DOMAIN + USER_PROFILE + "all";
+
         public static string Delete(int userProfileId)
         {
             return DOMAIN + USER_PROFILE + $"delete/{userProfileId}";
         }
-
-        public const string UPDATE = DOMAIN + USER_PROFILE + "update";
-        public const string GET_ALL = DOMAIN + USER_PROFILE + "all";
 
         public static string GetInfo(int userProfileId)
         {

@@ -7,7 +7,7 @@ public class VisualManager : PersistentSingleton<VisualManager>
 
     public TMP_FontAsset PrimaryTextFont;
     public Color PrimaryTextColor;
-    
+
     public TMP_FontAsset SecondaryTextFont;
     public Color SecondaryTextColor;
 

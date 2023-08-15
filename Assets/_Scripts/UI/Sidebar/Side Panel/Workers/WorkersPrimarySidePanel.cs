@@ -2,15 +2,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Sidebar
+namespace UI.Sidebar.SidePanel.Workers
 {
-    public class SettingsPrimarySidePanel : PrimarySidePanel
+    public class WorkersPrimarySidePanel : PrimarySidePanel
     {
         [SerializeField] private ScrollRect _scrollRect;
 
-        public SettingsPrimarySidePanel()
+        public WorkersPrimarySidePanel()
         {
-            SidePanelType = SidePanelType.Settings;
+            SidePanelType = SidePanelType.Workers;
         }
 
         protected override IEnumerator Start()

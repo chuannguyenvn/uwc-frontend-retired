@@ -3,6 +3,6 @@
     public enum FontType
     {
         Primary,
-        Secondary,
+        Secondary
     }
 }
