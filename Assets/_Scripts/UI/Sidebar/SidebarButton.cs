@@ -37,7 +37,8 @@ namespace UI.Sidebar
             _cellTypeText.text = SidebarController.Instance.TypeNames[_sidePanelType];
             _primarySidePanel = SidebarController.Instance.Panels[_sidePanelType];
 
-            if (_primarySidePanel != null || _sidePanelType == SidePanelType.Map) _button.onClick.AddListener(TogglePanel);
+            _button.onClick.AddListener(TogglePanel);
+            SidebarController.Instance.SidePanelActivated += SidePanelActivatedHandler; 
         }
 
         private void TogglePanel()
@@ -50,6 +51,11 @@ namespace UI.Sidebar
 
             if (!_primarySidePanel.IsShowing) SidebarController.Instance.PushBackStack(_primarySidePanel);
             else SidebarController.Instance.PopAllBackStack();
+        }
+
+        private void SidePanelActivatedHandler(SidePanelType sidePanelType)
+        {
+            _icon.color = sidePanelType == _sidePanelType ? Color.white : new Color(1, 1, 1, 0.5f);
         }
     }
 }

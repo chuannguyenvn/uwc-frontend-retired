@@ -8,7 +8,7 @@ namespace UI.Sidebar.SidePanel
 {
     public abstract class PrimarySidePanel : MonoBehaviour
     {
-        public SidePanelType SidePanelType;
+        [HideInInspector] public SidePanelType SidePanelType;
 
         [SerializeField] protected RectTransform _rectTransform;
         [SerializeField] protected TMP_Text _titleText;

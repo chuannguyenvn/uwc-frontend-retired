@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UI.Sidebar.SidePanel;
 using UI.Sidebar.SidePanel.Mcp;
 using UI.Sidebar.SidePanel.Messaging;
@@ -24,7 +25,8 @@ namespace UI.Sidebar
 
         public Dictionary<SidePanelType, string> TypeNames;
 
-        public SidePanelType CurrentlyActivatedSidebarType { get; private set; }
+        public SidePanelType CurrentlyActivatedSidePanelType;
+        public event Action<SidePanelType> SidePanelActivated;
 
         protected override void Awake()
         {
@@ -53,10 +55,16 @@ namespace UI.Sidebar
             };
         }
 
+        private void Start()
+        {
+            PopAllBackStack();
+        }
+
         public void PushBackStack(PrimarySidePanel primarySidePanel)
         {
-            CurrentlyActivatedSidebarType = primarySidePanel.SidePanelType;
             PopAllBackStack();
+            CurrentlyActivatedSidePanelType = primarySidePanel.SidePanelType;
+            SidePanelActivated?.Invoke(primarySidePanel.SidePanelType);
             primarySidePanel.ShowTweened();
             _backStack.Push(primarySidePanel);
         }
@@ -69,7 +77,8 @@ namespace UI.Sidebar
 
         public void PopAllBackStack()
         {
-            CurrentlyActivatedSidebarType = SidePanelType.Map;
+            CurrentlyActivatedSidePanelType = SidePanelType.Map;
+            SidePanelActivated?.Invoke(SidePanelType.Map);
             while (_backStack.Count > 0) PopBackStack();
         }
     }
