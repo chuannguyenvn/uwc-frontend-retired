@@ -1,4 +1,7 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using Https;
+using Models;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +11,7 @@ namespace UI.Sidebar.SidePanel.Workers
     {
         [SerializeField] private ScrollRect _scrollRect;
 
-        public WorkersPrimarySidePanel()
+        private void Awake()
         {
             SidePanelType = SidePanelType.Workers;
         }
@@ -16,6 +19,23 @@ namespace UI.Sidebar.SidePanel.Workers
         protected override IEnumerator Start()
         {
             yield return base.Start();
+
+            yield return HttpClient.SendRequest<List<UserProfile>>(Endpoints.UserProfile.GET_ALL,
+                HttpClient.RequestType.GET,
+                (success, result) =>
+                {
+                    if (success) InitList(result);
+                },
+                "");
+        }
+
+        private void InitList(List<UserProfile> userProfiles)
+        {
+            foreach (var userProfile in userProfiles)
+            {
+                var element = SidePanelListElementPool.Instance.GetElement(_scrollRect.content);
+                element.InitWorker(userProfile);
+            }
         }
     }
 }

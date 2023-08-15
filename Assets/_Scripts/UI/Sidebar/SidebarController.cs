@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UI.Sidebar.SidePanel;
-using UI.Sidebar.SidePanel.Mcp;
 using UI.Sidebar.SidePanel.Messaging;
 using UI.Sidebar.SidePanel.Reports;
 using UI.Sidebar.SidePanel.Settings;

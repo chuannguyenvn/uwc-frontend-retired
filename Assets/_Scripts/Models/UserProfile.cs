@@ -3,7 +3,7 @@ using Types;
 
 namespace Models
 {
-    public abstract class UserProfile : IndexedEntity
+    public class UserProfile : IndexedEntity
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

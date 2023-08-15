@@ -5,7 +5,7 @@ namespace UI.Sidebar.SidePanel.Reports
 {
     public class ReportPrimarySidePanel : PrimarySidePanel
     {
-        public ReportPrimarySidePanel()
+        private void Awake()
         {
             SidePanelType = SidePanelType.Reports;
         }

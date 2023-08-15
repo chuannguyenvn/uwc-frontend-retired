@@ -1,3 +1,5 @@
+using System;
+
 namespace Models
 {
     public class TaskEntry : IndexedEntity

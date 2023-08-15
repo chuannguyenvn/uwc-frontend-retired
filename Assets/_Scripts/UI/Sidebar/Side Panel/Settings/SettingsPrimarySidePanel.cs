@@ -8,7 +8,7 @@ namespace UI.Sidebar.SidePanel.Settings
     {
         [SerializeField] private ScrollRect _scrollRect;
 
-        public SettingsPrimarySidePanel()
+        private void Awake()
         {
             SidePanelType = SidePanelType.Settings;
         }

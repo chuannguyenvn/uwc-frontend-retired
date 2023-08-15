@@ -1,17 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Https;
+using Models;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Sidebar.SidePanel.Mcp
+namespace UI.Sidebar.SidePanel
 {
     public class McpsPrimarySidePanel : PrimarySidePanel
     {
-        [SerializeField] private McpSidePanelListElement _listElementPrefab;
         [SerializeField] private ScrollRect _scrollRect;
 
-        public McpsPrimarySidePanel()
+        private void Awake()
         {
             SidePanelType = SidePanelType.Mcps;
         }
@@ -20,7 +21,7 @@ namespace UI.Sidebar.SidePanel.Mcp
         {
             yield return base.Start();
 
-            yield return HttpClient.SendRequest<List<Models.Mcp>>(Endpoints.Mcp.GET_ALL,
+            yield return HttpClient.SendRequest<List<Mcp>>(Endpoints.Mcp.GET_ALL,
                 HttpClient.RequestType.GET,
                 (success, result) =>
                 {
@@ -29,12 +30,12 @@ namespace UI.Sidebar.SidePanel.Mcp
                 "");
         }
 
-        private void InitList(List<Models.Mcp> mcps)
+        private void InitList(List<Mcp> mcps)
         {
             foreach (var mcp in mcps)
             {
-                var element = Instantiate(_listElementPrefab, _scrollRect.content, false);
-                element.Init(mcp);
+                var element = SidePanelListElementPool.Instance.GetElement(_scrollRect.content);
+                element.InitMcp(mcp);
             }
         }
     }

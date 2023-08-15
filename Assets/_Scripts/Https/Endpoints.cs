@@ -1,4 +1,4 @@
-﻿using Models.Types;
+﻿using Types;
 
 public static class Endpoints
 {
