@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace UI.InformationPanel
 {
-    public class McpInformationPanel : MonoBehaviour
+    public class McpInformationPanel : InformationPanel
     {
         [SerializeField] private TMP_Text _addressText;
         [SerializeField] private TMP_Text _fillLevelText;
@@ -16,29 +16,15 @@ namespace UI.InformationPanel
         [SerializeField] private Image _fillLevelBarImage;
         [SerializeField] private RectTransform _fillLevelBarRectTransform;
         [SerializeField] private Image _fillLevelDetailBackgroundImage;
-        [SerializeField] private Button _hideButton;
-        private RectTransform _rectTransform;
         private float _initialFillLevelBarWidth;
-        private float _initialWidth;
-        private Tween _movementTween;
-        private bool _isShowing = false;
-        private Mcp _showingMcp;
         
-        private void Awake()
+        protected override void Awake()
         {
-            _rectTransform = GetComponent<RectTransform>();
+            base.Awake();
             _initialFillLevelBarWidth = _fillLevelBarRectTransform.rect.width;
-            _initialWidth = _rectTransform.rect.width;
-            _hideButton.onClick.AddListener(() => Hide());
         }
 
-        private void Start()
-        {
-            SidebarController.Instance.SidePanelActivated += (_) => Hide();
-            HideInstant();
-        }
-
-        public void Show(Mcp mcp)
+        public override void Show(Mcp mcp)
         {
             if (_showingMcp == mcp) return;
             _showingMcp = mcp;
@@ -64,18 +50,6 @@ namespace UI.InformationPanel
             _isShowing = true;
         }
 
-        public void Hide()
-        {
-            _movementTween?.Kill();
-            _movementTween = _rectTransform.DOAnchorPosX(_initialWidth + 50, 0.15f).SetEase(Ease.OutCubic);
-            _isShowing = false;
-        }
-
-        public void HideInstant()
-        {
-            _movementTween?.Kill();
-            _rectTransform.anchoredPosition = _rectTransform.anchoredPosition.WithX(_initialWidth + 50);
-            _isShowing = false;
-        }
+     
     }
 }

@@ -247,6 +247,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5567130964374680895, guid: d9a92ab2225d0544bb5776106b914fe6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8069959979260338129, guid: d9a92ab2225d0544bb5776106b914fe6, type: 3}
       propertyPath: m_Name
       value: Vehicles
@@ -310,6 +314,10 @@ PrefabInstance:
       value: Messaging
       objectReference: {fileID: 0}
     - target: {fileID: 5884185099022614250, guid: f55b78becf365124388875b0b2cacae1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8292533114151670788, guid: f55b78becf365124388875b0b2cacae1, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -822,6 +830,10 @@ PrefabInstance:
     - target: {fileID: 8308400762715647597, guid: 65bc0b16af2777f42b9bd66017dac18b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701148975349052543, guid: 65bc0b16af2777f42b9bd66017dac18b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1785,6 +1797,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4371759173726303896, guid: 21113a990d3a23b478f1085da9e84575, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5776845294772062180, guid: 21113a990d3a23b478f1085da9e84575, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2166,6 +2182,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 760201772633752381, guid: 8770dc4952dad9c4593d576d07feb80e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2896072642865539539, guid: 8770dc4952dad9c4593d576d07feb80e, type: 3}
       propertyPath: m_Name
       value: Settings
@@ -2360,6 +2380,10 @@ PrefabInstance:
     - target: {fileID: 3324013503909710933, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801300465296325929, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5272672588555396923, guid: fee7b4263dc94f84fad8c4f30f077647, type: 3}
       propertyPath: m_Pivot.x
@@ -2835,6 +2859,10 @@ PrefabInstance:
       propertyPath: _hideButton
       value: 
       objectReference: {fileID: 900624365}
+    - target: {fileID: 4136327193749875007, guid: 9c2ff419db59c094ca2d2c8d630cf977, type: 3}
+      propertyPath: _rectTransform
+      value: 
+      objectReference: {fileID: 441747012}
     - target: {fileID: 4136327193749875007, guid: 9c2ff419db59c094ca2d2c8d630cf977, type: 3}
       propertyPath: _fillLevelDetailBackgroundImage
       value: 
