@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using System.Threading;
 using Communications.Vehicle;
 using Https;
@@ -18,11 +17,13 @@ namespace Map.Entity
 
         [SerializeField] AbstractMap _abstractMap;
 
-        [SerializeField] MapEntity _entityPrefab;
+        [SerializeField] private McpMapEntity _mcpMapEntityPrefab;
+        [SerializeField] private DriverMapEntity _driverMapEntityPrefab;
+        [SerializeField] private CleanerMapEntity _cleanerMapEntityPrefab;
 
-        List<GameObject> _spawnedObjects;
-        private List<MapEntity> _mcpMapEntities = new();
-        private Dictionary<int, MapEntity> _vehicleMapEntitiesById = new();
+        private readonly Dictionary<int, McpMapEntity> _mcpMapEntitiesById = new();
+        private readonly Dictionary<int, DriverMapEntity> _driverMapEntitiesById = new();
+        private readonly Dictionary<int, CleanerMapEntity> _cleanerMapEntitiesById = new();
 
         private Timer _vehicleLocationRefreshTimer;
 
@@ -37,8 +38,6 @@ namespace Map.Entity
 
             MapUpdated?.Invoke();
 
-            // _vehicleLocationRefreshTimer = new Timer(RefreshVehicles, this, TimeSpan.Zero, TimeSpan.FromSeconds(5));
-            
             InvokeRepeating(nameof(RefreshVehicles), 1f, 5f);
         }
 
@@ -52,9 +51,11 @@ namespace Map.Entity
                     {
                         foreach (var value in result)
                         {
-                            var dot = Instantiate(_entityPrefab, transform);
-                            dot.Init(value.Latitude, value.Longitude);
-                            _mcpMapEntities.Add(dot);
+                            var dot = Instantiate(_mcpMapEntityPrefab, transform);
+                            dot.InitId(value.Id);
+                            dot.InitCoordinate(value.Latitude, value.Longitude);
+
+                            _mcpMapEntitiesById.Add(value.Id, dot);
                         }
                     }
                 },
@@ -71,8 +72,10 @@ namespace Map.Entity
                     {
                         foreach (var value in result)
                         {
-                            var dot = Instantiate(_entityPrefab, transform);
-                            _vehicleMapEntitiesById.Add(value.Id, dot);
+                            var dot = Instantiate(_driverMapEntityPrefab, transform);
+                            dot.InitId(value.Id);
+
+                            _driverMapEntitiesById.Add(value.Id, dot);
                         }
                     }
                 },
@@ -81,7 +84,6 @@ namespace Map.Entity
 
         private void RefreshVehicles()
         {
-            Debug.Log("Refreshing vehicles.");
             StartCoroutine(HttpClient.SendRequest<GetAllVehicleLocationResponse>(endpoint: Endpoints.Vehicle.GET_ALL_LOCATION,
                 requestRequestType: HttpClient.RequestType.GET,
                 (success, result) =>
@@ -90,7 +92,7 @@ namespace Map.Entity
                     {
                         foreach (var (vehicleId, vehicleLocation) in result.Result)
                         {
-                            _vehicleMapEntitiesById[vehicleId].UpdateCoordinate(vehicleLocation);
+                            _driverMapEntitiesById[vehicleId].UpdateCoordinate(vehicleLocation);
                         }
                     }
                 },
@@ -104,7 +106,7 @@ namespace Map.Entity
 
         private void OnDestroy()
         {
-            _vehicleLocationRefreshTimer.Dispose();
+            _vehicleLocationRefreshTimer?.Dispose();
         }
     }
 }

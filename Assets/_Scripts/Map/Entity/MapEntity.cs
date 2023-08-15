@@ -3,23 +3,30 @@ using UnityEngine;
 
 namespace Map.Entity
 {
-    public class MapEntity : MonoBehaviour
+    public abstract class MapEntity : MonoBehaviour
     {
-        private Coordinate _coordinate;
+        public int _id;
+        public int Id => _id;
 
+        private Coordinate _coordinate;
         public Coordinate Coordinate => _coordinate;
 
-        private void Start()
+        protected virtual void Start()
         {
             MapEntityController.Instance.MapUpdated += UpdatePosition;
         }
 
-        public void Init(Coordinate coordinate)
+        public void InitId(int id)
+        {
+            _id = id;
+        }
+
+        public void InitCoordinate(Coordinate coordinate)
         {
             _coordinate = coordinate;
         }
 
-        public void Init(double latitude, double longitude)
+        public void InitCoordinate(double latitude, double longitude)
         {
             _coordinate = new Coordinate(latitude, longitude);
         }
