@@ -1688,12 +1688,12 @@ MonoBehaviour:
   _initializeOnStart: 1
   _imagery:
     _layerProperty:
-      sourceType: 0
+      sourceType: 6
       sourceOptions:
         isActive: 1
         layerSource:
           Name: Streets
-          Id: mapbox://styles/mapbox/streets-v10
+          Id: mapbox://styles/chuan-nguyenvn/cllbq6uaa00tl01pd7qaa6h0m
           Modified: 
           UserName: 
       rasterOptions:
