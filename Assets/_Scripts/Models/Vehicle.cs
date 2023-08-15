@@ -1,4 +1,4 @@
-using Models.Types;
+using Types;
 
 namespace Models
 {
