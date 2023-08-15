@@ -14,4 +14,8 @@ public class VisualManager : PersistentSingleton<VisualManager>
     public Color PrimaryPanelColor;
     public Color SecondaryPanelColor;
     public Color BackgroundPanelColor;
+
+    public Color McpNotFullColor;
+    public Color McpNearlyFullColor;
+    public Color McpFullColor;
 }

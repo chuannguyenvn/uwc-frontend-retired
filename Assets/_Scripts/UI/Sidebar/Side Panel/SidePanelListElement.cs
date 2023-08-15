@@ -24,15 +24,26 @@ namespace UI.Sidebar.SidePanel
         public void InitMcp(Mcp mcp)
         {
             gameObject.SetActive(true);
+            
+            var fillPercentage = mcp.CurrentLoad / mcp.Capacity;
+            _backgroundIconImage.color = fillPercentage switch
+            {
+                < 0.9f => VisualManager.Instance.McpNotFullColor,
+                < 1f => VisualManager.Instance.McpNearlyFullColor,
+                _ => VisualManager.Instance.McpFullColor
+            };
+            
+            _foregroundIconImage.color = Color.white;
+
             _primaryText.text = mcp.Address;
-            _secondaryText.text = mcp.CurrentLoad + "/" + mcp.Capacity + "kgs";
+            _secondaryText.text = mcp.CurrentLoad.ToString("F2") + "/" + mcp.Capacity.ToString("F2") + "kgs";
         }
 
         public void InitVehicle(Vehicle vehicle)
         {
             gameObject.SetActive(true);
             _primaryText.text = vehicle.LicensePlate + " " + vehicle.VehicleType;
-            _secondaryText.text = vehicle.CurrentLoad + "/" + vehicle.Capacity + "kgs";
+            _secondaryText.text = vehicle.CurrentLoad.ToString("F2") + "/" + vehicle.Capacity.ToString("F2") + "kgs";
         }
 
         public void InitMessage(Message message)
