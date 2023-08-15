@@ -338,6 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48502947e8404b36b85df3bb9fca5a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _button: {fileID: 2483874371344423313}
   _backgroundImage: {fileID: 4156216463254779823}
   _backgroundIconImage: {fileID: 9022205867640029351}
   _foregroundIconImage: {fileID: 1917219030166599850}
@@ -383,7 +384,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 4156216463254779823}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []

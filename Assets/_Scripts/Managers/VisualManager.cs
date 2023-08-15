@@ -18,4 +18,24 @@ public class VisualManager : PersistentSingleton<VisualManager>
     public Color McpNotFullColor;
     public Color McpNearlyFullColor;
     public Color McpFullColor;
+
+    public Color GetFillLevelColor(float fillPercentage)
+    {
+        return fillPercentage switch
+        {
+            < 0.9f => McpNotFullColor,
+            < 1f => McpNearlyFullColor,
+            _ => McpFullColor
+        };
+    }
+
+    public string GetFillLevelDescription(float fillPercentage)
+    {
+        return fillPercentage switch
+        {
+            < 0.9f => "Not full",
+            < 1f => "Nearly full",
+            _ => "Full"
+        };
+    }
 }

@@ -1,5 +1,6 @@
 ﻿using Models;
 using TMPro;
+using UI.InformationPanel;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UI.ProceduralImage;
@@ -8,6 +9,7 @@ namespace UI.Sidebar.SidePanel
 {
     public class SidePanelListElement : MonoBehaviour
     {
+        [SerializeField] private Button _button;
         [SerializeField] private Image _backgroundImage;
         [SerializeField] private Image _backgroundIconImage;
         [SerializeField] private Image _foregroundIconImage;
@@ -37,6 +39,9 @@ namespace UI.Sidebar.SidePanel
 
             _primaryText.text = mcp.Address;
             _secondaryText.text = mcp.CurrentLoad.ToString("F2") + "/" + mcp.Capacity.ToString("F2") + "kgs";
+            
+            _button.onClick.RemoveAllListeners();
+            _button.onClick.AddListener(() => InformationPanelController.Instance.ShowMcpPanel(mcp));
         }
 
         public void InitVehicle(Vehicle vehicle)
