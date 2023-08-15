@@ -10,8 +10,8 @@ namespace UI.Sidebar
     {
         public SidePanelType SidePanelType;
 
-        [SerializeField] private RectTransform _rectTransform;
-        [SerializeField] private TMP_Text _titleText;
+        [SerializeField] protected RectTransform _rectTransform;
+        [SerializeField] protected TMP_Text _titleText;
         
         private Tween _anchorPosTween;
 
@@ -20,11 +20,11 @@ namespace UI.Sidebar
         protected virtual IEnumerator Start()
         {
             _titleText.text = SidebarController.Instance.TypeNames[SidePanelType];
+
+            yield return null;
             
             ShowInstant();
             HideInstant();
-            
-            yield break;
         }
 
         public event Action Shown;
@@ -46,7 +46,7 @@ namespace UI.Sidebar
 
             _anchorPosTween.Kill();
             _anchorPosTween = _rectTransform
-                .DOAnchorPosX(-_rectTransform.rect.size.y - 100, VisualManager.Instance.SIDE_PANEL_TRANSITION_TIME)
+                .DOAnchorPosX(-_rectTransform.sizeDelta.x, VisualManager.Instance.SIDE_PANEL_TRANSITION_TIME)
                 .SetEase(Ease.InCubic)
                 .OnComplete(() => Hidden?.Invoke());
         }
@@ -64,7 +64,7 @@ namespace UI.Sidebar
             RegisterAsHidden();
 
             _anchorPosTween.Kill();
-            _rectTransform.anchoredPosition = _rectTransform.anchoredPosition.WithX(-_rectTransform.rect.size.y - 100);
+            _rectTransform.anchoredPosition = _rectTransform.anchoredPosition.WithX(-_rectTransform.sizeDelta.x);
         }
 
         private void RegisterAsShown()

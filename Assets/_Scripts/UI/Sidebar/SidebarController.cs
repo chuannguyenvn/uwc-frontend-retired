@@ -7,6 +7,7 @@ namespace UI.Sidebar
     {
         [SerializeField] private McpsPrimarySidePanel _mcpsPrimarySidePanel;
         [SerializeField] private VehiclesPrimarySidePanel _vehiclesPrimarySidePanel;
+        [SerializeField] private ReportPrimarySidePanel _reportPrimarySidePanel;
 
         public SidePanelType CurrentlyActivatedSidebarType;
 
@@ -36,7 +37,7 @@ namespace UI.Sidebar
                 {SidePanelType.Workers, null},
                 {SidePanelType.Mcps, _mcpsPrimarySidePanel},
                 {SidePanelType.Vehicles, _vehiclesPrimarySidePanel},
-                {SidePanelType.Reports, null},
+                {SidePanelType.Reports, _reportPrimarySidePanel},
                 {SidePanelType.Messaging, null},
                 {SidePanelType.Settings, null},
             };

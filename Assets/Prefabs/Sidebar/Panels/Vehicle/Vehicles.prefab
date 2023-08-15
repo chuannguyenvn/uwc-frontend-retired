@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf8001e7739c4b698502614e0884e2d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SidePanelType: 4
+  SidePanelType: 3
   _rectTransform: {fileID: 5102440391677734701}
   _titleText: {fileID: 7152595692964699359}
   _scrollRect: {fileID: 8841891028900924719}
