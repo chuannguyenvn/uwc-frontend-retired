@@ -1,8 +1,6 @@
-using System;
 using DG.Tweening;
 using Models;
 using TMPro;
-using UI.Sidebar;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +11,7 @@ namespace UI.InformationPanel
         [SerializeField] private TMP_Text _addressText;
         [SerializeField] private TMP_Text _fillLevelText;
         [SerializeField] private TMP_Text _emptyingLogText;
+        
         [SerializeField] private Image _fillLevelBarImage;
         [SerializeField] private RectTransform _fillLevelBarRectTransform;
         [SerializeField] private Image _fillLevelDetailBackgroundImage;
@@ -24,7 +23,7 @@ namespace UI.InformationPanel
             _initialFillLevelBarWidth = _fillLevelBarRectTransform.rect.width;
         }
 
-        public override void Show(Mcp mcp)
+        public void Show(Mcp mcp)
         {
             if (_showingMcp == mcp) return;
             _showingMcp = mcp;
@@ -49,7 +48,5 @@ namespace UI.InformationPanel
             
             _isShowing = true;
         }
-
-     
     }
 }

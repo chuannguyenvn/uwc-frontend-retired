@@ -28,10 +28,6 @@ namespace UI.InformationPanel
             HideInstant();
         }
 
-        public virtual void Show(Mcp mcp)
-        {
-        }
-
         public void Hide()
         {
             _movementTween?.Kill();

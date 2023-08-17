@@ -21,6 +21,8 @@ namespace UI.Sidebar.SidePanel
             gameObject.SetActive(true);
             _primaryText.text = worker.FirstName + " " + worker.LastName;
             _secondaryText.text = worker.Role.ToString();
+            
+            _button.onClick.RemoveAllListeners();
         }
 
         public void InitMcp(Mcp mcp)
@@ -49,6 +51,9 @@ namespace UI.Sidebar.SidePanel
             gameObject.SetActive(true);
             _primaryText.text = vehicle.LicensePlate + " " + vehicle.VehicleType;
             _secondaryText.text = vehicle.CurrentLoad.ToString("F2") + "/" + vehicle.Capacity.ToString("F2") + "kgs";
+            
+            _button.onClick.RemoveAllListeners();
+            _button.onClick.AddListener(() => InformationPanelController.Instance.ShowVehiclePanel(vehicle));
         }
 
         public void InitMessage(Message message)
@@ -56,6 +61,8 @@ namespace UI.Sidebar.SidePanel
             gameObject.SetActive(true);
             _primaryText.text = message.ReceiverAccount.LinkedProfile.FirstName + " " + message.ReceiverAccount.LinkedProfile.LastName;
             _secondaryText.text = message.TextContent;
+            
+            _button.onClick.RemoveAllListeners();
         }
 
         public void Hide()

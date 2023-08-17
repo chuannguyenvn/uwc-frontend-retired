@@ -1,4 +1,5 @@
 using TMPro;
+using Types;
 using UnityEngine;
 
 public class VisualManager : PersistentSingleton<VisualManager>
@@ -36,6 +37,17 @@ public class VisualManager : PersistentSingleton<VisualManager>
             < 0.9f => "Not full",
             < 1f => "Nearly full",
             _ => "Full"
+        };
+    }
+    
+    public string GetVehicleTypeString(VehicleType vehicleType)
+    {
+        return vehicleType switch
+        {
+            VehicleType.FrontLoader => "Frontloader",
+            VehicleType.SideLoader => "Sideloader",
+            VehicleType.RearLoader => "Rearloader",
+            _ => "Unknown"
         };
     }
 }
