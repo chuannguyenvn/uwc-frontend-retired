@@ -11,7 +11,7 @@ namespace UI.InformationPanel
         [SerializeField] protected Button _hideButton;
         [SerializeField] protected RectTransform _rectTransform;
         protected Tween _movementTween;
-        protected bool _isShowing = false;
+        protected bool _isShowing = true;
         protected Mcp _showingMcp;
         private float _initialWidth;
 
@@ -30,6 +30,8 @@ namespace UI.InformationPanel
 
         public void Hide()
         {
+            if (!_isShowing) return;
+            
             _movementTween?.Kill();
             _movementTween = _rectTransform.DOAnchorPosX(_initialWidth + 50, 0.15f).SetEase(Ease.OutCubic);
             _isShowing = false;
@@ -37,6 +39,8 @@ namespace UI.InformationPanel
 
         public void HideInstant()
         {
+            if (!_isShowing) return;
+
             _movementTween?.Kill();
             _rectTransform.anchoredPosition = _rectTransform.anchoredPosition.WithX(_initialWidth + 50);
             _isShowing = false;

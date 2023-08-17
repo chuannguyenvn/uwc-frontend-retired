@@ -72,6 +72,11 @@ namespace UI.Sidebar
         {
             var inspector = _backStack.Pop();
             inspector.HideTweened();
+
+            if (_backStack.Count == 0)
+            {
+                SidePanelActivated?.Invoke(SidePanelType.Map);
+            }
         }
 
         public void PopAllBackStack()
