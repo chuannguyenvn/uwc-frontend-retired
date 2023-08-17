@@ -4,6 +4,7 @@ using Https;
 using Models;
 using UnityEngine;
 using UnityEngine.UI;
+using Managers;
 
 namespace UI.Sidebar.SidePanel.Messaging
 {
@@ -20,7 +21,7 @@ namespace UI.Sidebar.SidePanel.Messaging
         {
             yield return base.Start();
 
-            yield return HttpClient.SendRequest<List<Message>>(Endpoints.Message.INBOX_LATEST,
+            yield return HttpClient.SendRequest<List<Message>>(Endpoints.Message.InboxLatest(AuthenticationManager.Instance.UserId),
                 HttpClient.RequestType.GET,
                 (success, result) =>
                 {

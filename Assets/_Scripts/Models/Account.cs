@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace Models
 {
     public class Account : IndexedEntity
@@ -10,7 +8,5 @@ namespace Models
 
         public UserProfile LinkedProfile { get; set; }
         public string Settings { get; set; }
-
-        public List<Message> Messages { get; set; }
     }
 }

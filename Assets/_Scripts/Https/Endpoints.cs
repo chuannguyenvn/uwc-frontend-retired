@@ -85,11 +85,14 @@ public static class Endpoints
 
         public const string ADD = DOMAIN + MESSAGE + "add";
 
-        public const string INBOX_LATEST = DOMAIN + MESSAGE + "inbox/latest";
-
-        public static string Inbox(int userId)
+        public static string InboxLatest(int userId)
         {
-            return DOMAIN + MESSAGE + $"inbox/{userId}";
+            return DOMAIN + MESSAGE + $"inbox/latest/{userId}";
+        }
+
+        public static string InboxWith(int senderId, int receiverId)
+        {
+            return DOMAIN + MESSAGE + $"inbox/{senderId}/{receiverId}";
         }
     }
 
