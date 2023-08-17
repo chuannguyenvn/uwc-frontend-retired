@@ -27,6 +27,8 @@ namespace UI.Sidebar
         public SidePanelType CurrentlyActivatedSidePanelType;
         public event Action<SidePanelType> SidePanelActivated;
 
+        public float SidebarWidth { get; private set; }
+        
         protected override void Awake()
         {
             base.Awake();
@@ -52,6 +54,8 @@ namespace UI.Sidebar
                 {SidePanelType.Messaging, _messagingPrimarySidePanel},
                 {SidePanelType.Settings, _settingsPrimarySidePanel}
             };
+
+            SidebarWidth = GetComponent<RectTransform>().rect.width;
         }
 
         private void Start()
