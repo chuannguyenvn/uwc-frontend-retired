@@ -2,6 +2,7 @@
 using Models;
 using TMPro;
 using UI.InformationPanel;
+using UI.Sidebar.SidePanel.Messaging;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -68,6 +69,7 @@ namespace UI.Sidebar.SidePanel
             _secondaryText.text = message.TextContent;
 
             _button.onClick.RemoveAllListeners();
+            _button.onClick.AddListener(() => MessagingInboxPanel.Instance.Init(otherAccount.Id));
         }
 
         public void Hide()

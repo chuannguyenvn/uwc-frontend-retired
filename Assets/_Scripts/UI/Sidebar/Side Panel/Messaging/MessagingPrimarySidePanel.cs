@@ -13,7 +13,7 @@ namespace UI.Sidebar.SidePanel.Messaging
     {
         [SerializeField] private ScrollRect _scrollRect;
         [SerializeField] RectTransform _inboxPanelRectTransform;
-
+        
         private void Awake()
         {
             SidePanelType = SidePanelType.Messaging;
