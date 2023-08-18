@@ -38,5 +38,14 @@ namespace UI.Sidebar.SidePanel
             element.gameObject.transform.SetParent(transform);
             element.Hide();
         }
+        
+        public void ReturnAllElements()
+        {
+            foreach (var element in _pool)
+            {
+                element.gameObject.transform.SetParent(transform);
+                element.Hide();
+            }
+        }
     }
 }
