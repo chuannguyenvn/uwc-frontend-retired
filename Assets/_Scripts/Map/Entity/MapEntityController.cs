@@ -2,12 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
-using Communications.Vehicle;
+using Commons.Communications.Vehicle;
+using Commons.Types;
 using Https;
 using Mapbox.Unity.Map;
 using Mapbox.Utils;
 using Models;
-using Types;
 using UnityEngine;
 
 namespace Map.Entity
@@ -37,7 +37,7 @@ namespace Map.Entity
 
             MapUpdated?.Invoke();
 
-            InvokeRepeating(nameof(RefreshVehicles), 1f, 5f);
+            InvokeRepeating(nameof(RefreshVehicles), 1f, 1f);
         }
 
         private void OnDestroy()
@@ -91,8 +91,16 @@ namespace Map.Entity
                 (success, result) =>
                 {
                     if (success)
-                        foreach (var (vehicleId, vehicleLocation) in result.Result)
-                            _driverMapEntitiesById[vehicleId].UpdateCoordinate(vehicleLocation);
+                    {
+                        foreach (var (vehicleId, vehicleMovement) in result.Result)
+                        {
+                            _driverMapEntitiesById[vehicleId]
+                                .UpdateCoordinate(vehicleMovement.CurrentLocation, vehicleMovement.CurrentOrientationAngle);
+                            _driverMapEntitiesById[vehicleId].UpdateRoutePolyline(vehicleMovement.MapboxDirectionResponse);
+
+                            return;
+                        }
+                    }
                 },
                 ""));
         }

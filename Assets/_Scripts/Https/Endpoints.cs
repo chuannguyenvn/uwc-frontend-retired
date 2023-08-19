@@ -1,4 +1,4 @@
-﻿using Types;
+﻿using Commons.Types;
 
 public static class Endpoints
 {

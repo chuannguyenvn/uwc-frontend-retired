@@ -1,6 +1,5 @@
-﻿using Communications.Authentication;
+﻿using Commons.Communications.Account;
 using Https;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Managers

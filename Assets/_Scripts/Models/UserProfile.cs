@@ -1,5 +1,5 @@
 using System;
-using Types;
+using Commons.Types;
 
 namespace Models
 {

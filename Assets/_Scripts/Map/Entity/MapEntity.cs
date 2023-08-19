@@ -1,4 +1,4 @@
-﻿using Types;
+﻿using Commons.Types;
 using UnityEngine;
 
 namespace Map.Entity
@@ -9,10 +9,11 @@ namespace Map.Entity
 
         public int Id => _id;
         public Coordinate Coordinate { get; private set; }
+        public float Rotation { get; private set; }
 
         protected virtual void Start()
         {
-            MapEntityController.Instance.MapUpdated += UpdatePosition;
+            MapEntityController.Instance.MapUpdated += UpdatePositionAndRotation;
         }
 
         private void OnMouseUp()
@@ -35,10 +36,11 @@ namespace Map.Entity
             Coordinate = new Coordinate(latitude, longitude);
         }
 
-        public void UpdateCoordinate(Coordinate coordinate)
+        public void UpdateCoordinate(Coordinate coordinate, float rotation)
         {
             Coordinate = coordinate;
-            UpdatePosition();
+            Rotation = rotation;
+            UpdatePositionAndRotation();
         }
 
         public void UpdateCoordinate(double latitude, double longitude)
@@ -46,9 +48,10 @@ namespace Map.Entity
             Coordinate = new Coordinate(latitude, longitude);
         }
 
-        private void UpdatePosition()
+        private void UpdatePositionAndRotation()
         {
             transform.position = MapEntityController.Instance.GetWorldPosition(Coordinate);
+            transform.rotation = Quaternion.Euler(0, Rotation, 0);
         }
 
         protected virtual void ButtonClickHandler()

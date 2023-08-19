@@ -1,5 +1,5 @@
+using Commons.Types;
 using TMPro;
-using Types;
 using UnityEngine;
 
 public class VisualManager : PersistentSingleton<VisualManager>
