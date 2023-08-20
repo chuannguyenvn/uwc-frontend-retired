@@ -28,7 +28,7 @@ namespace UI.InformationPanel
 
             _isShowing = true;
             
-            DriverMapEntity.CurrentlySelectedDriverMapEntity = MapEntityController.Instance.DriverMapEntitiesById[data.DriverProfile.Id];
+            DriverMapEntity.CurrentlySelectedDriverMapEntity = MapEntityController.Instance.DriverMapEntitiesById[data.DriverProfile.Id - 10];
         }
     }
 }

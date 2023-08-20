@@ -19,12 +19,6 @@ namespace Map.Entity
             set
             {
                 currentlySelectedDriverMapEntity = value;
-                if (value != null)
-                Debug.Log(value._id);
-                else
-                {
-                    Debug.Log("null");
-                }
                 SelectedEntityChanged?.Invoke();
             }
         }
@@ -57,6 +51,9 @@ namespace Map.Entity
             List<Vector2> points = new List<Vector2>();
             var currentCoordinate = MapEntityController.Instance.GetWorldPosition(Coordinate);
             points.Add(new Vector2(currentCoordinate.x, currentCoordinate.z));
+
+            if (mapboxDirectionResponse.Routes == null || mapboxDirectionResponse.Routes.Count == 0) return;
+            
             foreach (var coordinate in mapboxDirectionResponse.Routes[0].Geometry.Coordinates)
             {
                 var point = MapEntityController.Instance.GetWorldPosition(new Coordinate(coordinate));

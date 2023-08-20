@@ -7,10 +7,9 @@ namespace Map.Entity
     {
         [SerializeField] private Rectangle _background;
 
-        protected override void Start()
+        public void UpdateCapacity(float fillPercentage)
         {
-            base.Start();
-            _background.Color = Random.ColorHSV();
+            _background.Color =   VisualManager.Instance.GetFillLevelColor(fillPercentage);
         }
     }
 }

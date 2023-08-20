@@ -39,6 +39,7 @@ namespace Map.Entity
             MapUpdated?.Invoke();
 
             InvokeRepeating(nameof(RefreshVehicles), 1f, 1f);
+            InvokeRepeating(nameof(RefreshMcps), 1f, 1f);
         }
 
         private void OnDestroy()
@@ -84,6 +85,21 @@ namespace Map.Entity
                 "");
         }
 
+        private void RefreshMcps()
+        {
+            StartCoroutine(HttpClient.SendRequest<List<Mcp>>(Endpoints.Mcp.GET_ALL,
+                HttpClient.RequestType.GET,
+                (success, result) =>
+                {
+                    if (success)
+                        foreach (var value in result)
+                        {
+                            _mcpMapEntitiesById[value.Id].UpdateCapacity(value.Capacity);
+                        }
+                },
+                ""));
+        }
+        
         private void RefreshVehicles()
         {
             StartCoroutine(HttpClient.SendRequest<GetAllVehicleLocationResponse>(Endpoints.Vehicle.GET_ALL_LOCATION,
