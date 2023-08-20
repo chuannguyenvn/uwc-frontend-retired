@@ -20,7 +20,7 @@ namespace Map.Entity
         [SerializeField] private DriverMapEntity _driverMapEntityPrefab;
         [SerializeField] private CleanerMapEntity _cleanerMapEntityPrefab;
         private readonly Dictionary<int, CleanerMapEntity> _cleanerMapEntitiesById = new();
-        private readonly Dictionary<int, DriverMapEntity> _driverMapEntitiesById = new();
+        public readonly Dictionary<int, DriverMapEntity> DriverMapEntitiesById = new();
         private readonly Dictionary<int, McpMapEntity> _mcpMapEntitiesById = new();
 
         public GetAllVehicleLocationResponse VehicleLocationResponse { get; private set; }
@@ -78,8 +78,7 @@ namespace Map.Entity
                         {
                             var dot = Instantiate(_driverMapEntityPrefab, transform);
                             dot.InitId(value.Id);
-
-                            _driverMapEntitiesById.Add(value.Id, dot);
+                            DriverMapEntitiesById.Add(value.Id, dot);
                         }
                 },
                 "");
@@ -97,9 +96,9 @@ namespace Map.Entity
 
                         foreach (var (vehicleId, vehicleMovement) in result.Result)
                         {
-                            _driverMapEntitiesById[vehicleId]
+                            DriverMapEntitiesById[vehicleId]
                                 .UpdateCoordinate(vehicleMovement.CurrentLocation, vehicleMovement.CurrentOrientationAngle);
-                            _driverMapEntitiesById[vehicleId].UpdateRoutePolyline(vehicleMovement.MapboxDirectionResponse);
+                            DriverMapEntitiesById[vehicleId].UpdateRoutePolyline(vehicleMovement.MapboxDirectionResponse);
                         }
                     }
                 },

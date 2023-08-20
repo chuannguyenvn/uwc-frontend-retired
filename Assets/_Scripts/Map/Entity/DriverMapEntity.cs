@@ -1,13 +1,34 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Commons;
 using Commons.Types;
 using Shapes;
+using UI.InformationPanel;
 using UnityEngine;
 
 namespace Map.Entity
 {
     public class DriverMapEntity : MapEntity
     {
+        private static event Action SelectedEntityChanged;
+        private static DriverMapEntity currentlySelectedDriverMapEntity = null;
+
+        public static DriverMapEntity CurrentlySelectedDriverMapEntity
+        {
+            get => currentlySelectedDriverMapEntity;
+            set
+            {
+                currentlySelectedDriverMapEntity = value;
+                if (value != null)
+                Debug.Log(value._id);
+                else
+                {
+                    Debug.Log("null");
+                }
+                SelectedEntityChanged?.Invoke();
+            }
+        }
+
         [SerializeField] Polyline _routePolyline;
         private MapboxDirectionResponse _mapboxDirectionResponse;
 
@@ -19,6 +40,13 @@ namespace Map.Entity
             _routePolyline.transform.localScale = Vector3.one;
 
             MapEntityController.Instance.MapUpdated += () => UpdateRoutePolyline(_mapboxDirectionResponse);
+            SelectedEntityChanged += CheckEnablePolyline;
+            CheckEnablePolyline();
+        }
+
+        private void OnDestroy()
+        {
+            SelectedEntityChanged -= CheckEnablePolyline;
         }
 
         public void UpdateRoutePolyline(MapboxDirectionResponse mapboxDirectionResponse)
@@ -35,6 +63,43 @@ namespace Map.Entity
                 points.Add(new Vector2(point.x, point.z));
             }
             _routePolyline.SetPoints(points);
+        }
+
+        protected override void ButtonClickHandler()
+        {
+            base.ButtonClickHandler();
+            if (CurrentlySelectedDriverMapEntity == this)
+            {
+                CurrentlySelectedDriverMapEntity = null;
+            }
+            else
+            {
+                CurrentlySelectedDriverMapEntity = this;
+            }
+
+            InformationPanelController.Instance.ShowWorkerPanel(MapEntityController.Instance.VehicleLocationResponse.Result[_id]);
+        }
+
+        public void ShowPolyline()
+        {
+            _routePolyline.gameObject.SetActive(true);
+        }
+
+        public void HidePolyline()
+        {
+            _routePolyline.gameObject.SetActive(false);
+        }
+
+        private void CheckEnablePolyline()
+        {
+            if (CurrentlySelectedDriverMapEntity == this)
+            {
+                ShowPolyline();
+            }
+            else
+            {
+                HidePolyline();
+            }
         }
     }
 }

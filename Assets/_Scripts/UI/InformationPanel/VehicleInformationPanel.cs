@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using Map.Entity;
 using Models;
 using TMPro;
 using UnityEngine;
@@ -46,6 +47,20 @@ namespace UI.InformationPanel
             }
 
             _isShowing = true;
+            
+            DriverMapEntity.CurrentlySelectedDriverMapEntity = MapEntityController.Instance.DriverMapEntitiesById[vehicle.Id];
+        }
+
+        public override void Hide()
+        {
+            base.Hide();
+            DriverMapEntity.CurrentlySelectedDriverMapEntity = null;
+        }
+        
+        public override void HideInstant()
+        {
+            base.HideInstant();
+            DriverMapEntity.CurrentlySelectedDriverMapEntity = null;
         }
     }
 }

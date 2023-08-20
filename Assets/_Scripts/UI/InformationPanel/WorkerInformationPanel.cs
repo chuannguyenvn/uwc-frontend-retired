@@ -1,5 +1,6 @@
 ﻿using Commons;
 using DG.Tweening;
+using Map.Entity;
 using Models;
 using TMPro;
 using UnityEngine;
@@ -26,6 +27,8 @@ namespace UI.InformationPanel
             }
 
             _isShowing = true;
+            
+            DriverMapEntity.CurrentlySelectedDriverMapEntity = MapEntityController.Instance.DriverMapEntitiesById[data.DriverProfile.Id];
         }
     }
 }

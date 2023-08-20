@@ -28,7 +28,7 @@ namespace UI.InformationPanel
             HideInstant();
         }
 
-        public void Hide()
+        public virtual void Hide()
         {
             if (!_isShowing) return;
             
@@ -37,7 +37,7 @@ namespace UI.InformationPanel
             _isShowing = false;
         }
 
-        public void HideInstant()
+        public virtual void HideInstant()
         {
             if (!_isShowing) return;
 
