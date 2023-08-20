@@ -1,13 +1,20 @@
-﻿using Models;
+﻿using Commons;
+using Models;
 using UnityEngine;
 
 namespace UI.InformationPanel
 {
     public class InformationPanelController : Singleton<InformationPanelController>
     {
+        [SerializeField] private WorkerInformationPanel _workerInformationPanel;
         [SerializeField] private McpInformationPanel _mcpInformationPanel;
         [SerializeField] private VehicleInformationPanel _vehicleInformationPanel;
 
+        public void ShowWorkerPanel(VehicleMovementData data)
+        {
+            _workerInformationPanel.Show(data);
+        }
+        
         public void ShowMcpPanel(Mcp mcp)
         {
             _mcpInformationPanel.Show(mcp);

@@ -21,8 +21,9 @@ namespace Map.Entity
         [SerializeField] private CleanerMapEntity _cleanerMapEntityPrefab;
         private readonly Dictionary<int, CleanerMapEntity> _cleanerMapEntitiesById = new();
         private readonly Dictionary<int, DriverMapEntity> _driverMapEntitiesById = new();
-
         private readonly Dictionary<int, McpMapEntity> _mcpMapEntitiesById = new();
+
+        public GetAllVehicleLocationResponse VehicleLocationResponse { get; private set; }
 
         private Timer _vehicleLocationRefreshTimer;
 
@@ -92,13 +93,13 @@ namespace Map.Entity
                 {
                     if (success)
                     {
+                        VehicleLocationResponse = result;
+
                         foreach (var (vehicleId, vehicleMovement) in result.Result)
                         {
                             _driverMapEntitiesById[vehicleId]
                                 .UpdateCoordinate(vehicleMovement.CurrentLocation, vehicleMovement.CurrentOrientationAngle);
                             _driverMapEntitiesById[vehicleId].UpdateRoutePolyline(vehicleMovement.MapboxDirectionResponse);
-
-                            return;
                         }
                     }
                 },

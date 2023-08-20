@@ -1,19 +1,16 @@
-﻿using Commons.Types;
-using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Commons.Types;
+using Models;
 
 namespace Commons
 {
     public class VehicleMovementData
     {
-        [JsonProperty("CurrentLocation")] public Coordinate CurrentLocation { get; set; }
-
-        [JsonProperty("CurrentOrientationAngle")]
+        public DriverProfile DriverProfile { get; set; }
+        public Coordinate CurrentLocation { get; set; }
         public float CurrentOrientationAngle { get; set; }
-
-        [JsonProperty("IsBot")] public bool IsBot { get; set; }
-        [JsonProperty("TargettingMcp")] public Models.Mcp TargettingMcp { get; set; }
-
-        [JsonProperty("MapboxDirectionResponse")]
+        public bool IsBot { get; set; } = true;
+        public List<Mcp> TargettingMcps { get; set; }
         public MapboxDirectionResponse MapboxDirectionResponse { get; set; }
     }
 }

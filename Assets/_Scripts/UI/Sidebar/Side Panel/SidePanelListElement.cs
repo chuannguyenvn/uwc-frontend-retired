@@ -1,4 +1,5 @@
 ﻿using Managers;
+using Map.Entity;
 using Models;
 using TMPro;
 using UI.InformationPanel;
@@ -24,6 +25,9 @@ namespace UI.Sidebar.SidePanel
             _secondaryText.text = worker.Role.ToString();
 
             _button.onClick.RemoveAllListeners();
+            _button.onClick.AddListener(() =>
+                InformationPanelController.Instance.ShowWorkerPanel(
+                    MapEntityController.Instance.VehicleLocationResponse.Result[worker.Id - 10]));
         }
 
         public void InitMcp(Mcp mcp)

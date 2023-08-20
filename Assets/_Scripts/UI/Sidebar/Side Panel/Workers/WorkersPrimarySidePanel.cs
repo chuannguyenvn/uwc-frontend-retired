@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Commons.Types;
 using Https;
 using Models;
 using UnityEngine;
@@ -33,6 +34,7 @@ namespace UI.Sidebar.SidePanel.Workers
         {
             foreach (var userProfile in userProfiles)
             {
+                if (userProfile.Role != UserRole.Driver) continue;
                 var element = SidePanelListElementPool.Instance.GetElement(_scrollRect.content);
                 element.InitWorker(userProfile);
             }
