@@ -1586,7 +1586,9 @@ MonoBehaviour:
   _rectTransform: {fileID: 7708919367047225986}
   _nameText: {fileID: 2876321673927058895}
   _roleText: {fileID: 2029176176926372405}
+  _assignTaskButtonText: {fileID: 4026424027510278861}
   _assignTaskButton: {fileID: 6441009246152086650}
+  _messageTaskButtonText: {fileID: 7655232816634243934}
   _messageTaskButton: {fileID: 5357274541105186896}
 --- !u!1 &6877142778222570228
 GameObject:
