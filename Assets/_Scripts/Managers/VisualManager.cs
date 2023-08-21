@@ -1,9 +1,14 @@
+using System;
+using System.Collections.Generic;
 using Commons.Types;
 using TMPro;
 using UnityEngine;
 
 public class VisualManager : PersistentSingleton<VisualManager>
 {
+    public event Action ThemeChanged;
+    public event Action<bool> DarkModeToggled;
+
     public float SIDE_PANEL_TRANSITION_TIME;
 
     public TMP_FontAsset PrimaryTextFont;
@@ -19,6 +24,10 @@ public class VisualManager : PersistentSingleton<VisualManager>
     public Color McpNotFullColor;
     public Color McpNearlyFullColor;
     public Color McpFullColor;
+
+    public List<Color> Themes;
+
+    public bool IsDarkMode = false;
 
     public Color GetFillLevelColor(float fillPercentage)
     {
@@ -39,7 +48,7 @@ public class VisualManager : PersistentSingleton<VisualManager>
             _ => "Full"
         };
     }
-    
+
     public string GetVehicleTypeString(VehicleType vehicleType)
     {
         return vehicleType switch
@@ -49,5 +58,26 @@ public class VisualManager : PersistentSingleton<VisualManager>
             VehicleType.RearLoader => "Rearloader",
             _ => "Unknown"
         };
+    }
+
+    public void ToggleDarkMode()
+    {
+        IsDarkMode = !IsDarkMode;
+        if (IsDarkMode)
+        {
+            BackgroundPanelColor = new Color(0.05f, 0.05f, 0.05f, 1f);
+        }
+        else
+        {
+            BackgroundPanelColor = Color.white;
+        }
+        DarkModeToggled?.Invoke(IsDarkMode);
+        ThemeChanged?.Invoke();
+    }
+
+    public void SetTheme(int themeOrder)
+    {
+        PrimaryPanelColor = Themes[themeOrder];
+        ThemeChanged?.Invoke();
     }
 }
