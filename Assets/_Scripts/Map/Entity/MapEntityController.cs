@@ -94,7 +94,7 @@ namespace Map.Entity
                     if (success)
                         foreach (var value in result)
                         {
-                            _mcpMapEntitiesById[value.Id].UpdateCapacity(value.Capacity);
+                            _mcpMapEntitiesById[value.Id].UpdateCapacity(value.CurrentLoad / value.Capacity);
                         }
                 },
                 ""));

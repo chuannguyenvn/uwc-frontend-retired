@@ -11,6 +11,7 @@ namespace Visuals
         private void Start()
         {
             var text = GetComponent<TMP_Text>();
+            text.fontStyle = FontStyles.Normal;
             switch (_fontType)
             {
                 case FontType.Primary:
