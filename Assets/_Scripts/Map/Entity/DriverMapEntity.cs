@@ -36,6 +36,7 @@ namespace Map.Entity
             MapEntityController.Instance.MapUpdated += () => UpdateRoutePolyline(_mapboxDirectionResponse);
             SelectedEntityChanged += CheckEnablePolyline;
             CheckEnablePolyline();
+            FilterPanel.Instance.FilterChanged += EvaluateVisibility;
         }
 
         private void OnDestroy()
@@ -43,6 +44,11 @@ namespace Map.Entity
             SelectedEntityChanged -= CheckEnablePolyline;
         }
 
+        private void EvaluateVisibility()
+        {
+            gameObject.SetActive(FilterPanel.Instance.FilterFlags[4]);
+        }
+        
         public void UpdateRoutePolyline(MapboxDirectionResponse mapboxDirectionResponse)
         {
             if (mapboxDirectionResponse == null) return;
