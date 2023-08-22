@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -41,15 +42,25 @@ namespace UI.Sidebar.SidePanel.Messaging
             }
 
             _messageText.text = messageContent;
-            _timestampText.text = timestamp.ToString("HH:mm");
+            _timestampText.text = TimeZoneInfo.ConvertTimeFromUtc(timestamp, TimeZoneInfo.Local).ToString("HH:mm");
         }
 
         public void ReevaluateSize()
         {
-            // _messageBoxRectTransform.sizeDelta = _messageBoxRectTransform.sizeDelta.WithY(_messageText.preferredHeight + 20);
-            _rectTransform.sizeDelta = _rectTransform.sizeDelta.WithY(_messageText.preferredHeight + 20 + 50);
+            StartCoroutine(ReevaluateSize_CO());
             // _messageBoxRectTransform.sizeDelta =
             //     _messageBoxRectTransform.sizeDelta.WithX((_isFromCurrentUser ? 1 : -1) * (_initialWitdh - _messageText.preferredWidth));
+        }
+
+        private IEnumerator ReevaluateSize_CO()
+        {
+            yield return null;
+            var backgroundRectTransform = _messageBackgroundImage.rectTransform;
+            backgroundRectTransform.pivot = new Vector2(_isFromCurrentUser ? 1 : 0, 0.5f);
+            backgroundRectTransform.anchorMin = new Vector2(_isFromCurrentUser ? 1 : 0, 0);
+            backgroundRectTransform.anchorMax = new Vector2(_isFromCurrentUser ? 1 : 0, 1);
+            backgroundRectTransform.sizeDelta = backgroundRectTransform.sizeDelta.WithX(_messageText.preferredWidth + 30);
+            _rectTransform.sizeDelta = _rectTransform.sizeDelta.WithY(_messageText.preferredHeight + 20 + 50);
         }
     }
 }
